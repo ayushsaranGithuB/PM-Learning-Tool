@@ -3,14 +3,28 @@ import CourseNav from "../components/CourseNav.astro";
 import { getLessons } from "../lib/lessons";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/global.css";
+import { modules } from "../lib/modules";
 
 type Props = {
   title: string;
   description?: string;
 };
 
-const { title, description = "A calm, technical notebook for learning product management." } = Astro.props;
+const {
+  title,
+  description = "A calm, technical notebook for learning product management.",
+} = Astro.props;
 const lessons = getLessons();
+
+const totalLessons = lessons.length;
+const draftedLessons = lessons.filter(
+  (lesson) => lesson.data.status === "draft",
+).length;
+const totalReading = lessons.reduce(
+  (sum, lesson) => sum + lesson.data.recommendedReading.length,
+  0,
+);
+
 ---
 
 <!doctype html>
@@ -23,7 +37,10 @@ const lessons = getLessons();
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script is:inline>
       const savedTheme = localStorage.getItem("pm-learning-theme");
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
       document.documentElement.dataset.theme = savedTheme || systemTheme;
     </script>
   </head>
@@ -44,12 +61,28 @@ const lessons = getLessons();
 
       <footer class="footer">
         <div class="footer__inner">
-        <h3>
-          PM Learning Tool. 
-        </h3>
-          <p>
-            A personal notebook for builders learning product management.</p>
-          <p>Write one lesson at a time. Keep the notes honest. Keep the pace sustainable.</p>
+          <div>
+            <h3>PM Learning Tool.</h3>
+            <p>A personal notebook for builders learning product management.</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-card__label">Modules</span>
+              <strong>{modules.length}</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__label">Lessons</span>
+              <strong>{totalLessons}</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__label">Reading Links</span>
+              <strong>{totalReading}</strong>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__label">Drafts</span>
+              <strong>{draftedLessons}</strong>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

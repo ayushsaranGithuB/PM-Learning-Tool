@@ -1,17 +1,14 @@
----
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getLessonUrl, getLessons } from "../lib/lessons";
 import { modules } from "../lib/modules";
 
 const lessons = getLessons();
-const totalLessons = lessons.length;
-const draftedLessons = lessons.filter((lesson) => lesson.data.status === "draft").length;
-const totalReading = lessons.reduce((sum, lesson) => sum + lesson.data.recommendedReading.length, 0);
 const modulesWithLessons = modules.map((module) => ({
   ...module,
   lessons: lessons
     .filter((lesson) => lesson.data.module === module.id)
-    .sort((a, b) => a.data.order - b.data.order)
+    .sort((a, b) => a.data.order - b.data.order),
 }));
 ---
 
@@ -20,27 +17,9 @@ const modulesWithLessons = modules.map((module) => ({
     <p class="eyebrow">Notebook</p>
     <h1>Product management notes for builders.</h1>
     <p class="hero__lede">
-      A quiet learning guide for engineers and designers moving toward stronger product judgment.
+      A quiet learning guide for engineers and designers moving toward stronger
+      product judgment.
     </p>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-card__label">Modules</span>
-        <strong>{modules.length}</strong>
-      </div>
-      <div class="stat-card">
-        <span class="stat-card__label">Lessons</span>
-        <strong>{totalLessons}</strong>
-      </div>
-      <div class="stat-card">
-        <span class="stat-card__label">Reading Links</span>
-        <strong>{totalReading}</strong>
-      </div>
-      <div class="stat-card">
-        <span class="stat-card__label">Drafts</span>
-        <strong>{draftedLessons}</strong>
-      </div>
-    </div>
   </section>
 
   <section class="content-section">
@@ -50,19 +29,31 @@ const modulesWithLessons = modules.map((module) => ({
     </div>
 
     <div class="module-grid">
-      {modulesWithLessons.map((module) => (
-        <article class="module-card">
-          <div class="module-card__header">
-            <p class="module-card__eyebrow">{module.path}</p>
-            <h3><a href={`/${module.path}/`}>{module.title}</a></h3>
-          </div>
-          <p>{module.description}</p>
-          <div class="module-card__footer">
-            <span>{module.lessons.length} lesson{module.lessons.length === 1 ? "" : "s"}</span>
-            {module.lessons[0] ? <a href={getLessonUrl(module.lessons[0])}>Start here</a> : <span>Coming soon</span>}
-          </div>
-        </article>
-      ))}
+      {modulesWithLessons.map((module, index) => {
+        const href = module.lessons[0] ? getLessonUrl(module.lessons[0]) : `/${module.path}/`;
+
+        return (
+          <a class="module-card module-card--link" href={href}>
+            <div class="module-card__header">
+              <h3>
+                {(index + 1).toLocaleString("en-US", {
+                  minimumIntegerDigits: 2,
+                  useGrouping: false,
+                })}
+                . {module.title}
+              </h3>
+            </div>
+            <p>{module.description}</p>
+            <div class="module-card__footer">
+              <span>
+                {module.lessons.length} lesson
+                {module.lessons.length === 1 ? "" : "s"}
+              </span>
+              <span>{module.lessons[0] ? "Start here →" : "Coming soon"}</span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>

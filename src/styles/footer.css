@@ -11,4 +11,15 @@
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
+    padding: 1.5rem 0 2rem;
+}
+
+.footer__inner h3 {
+    margin-bottom: 0;
+}
+
+.footer__inner p {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-top: 0.35rem;
 }

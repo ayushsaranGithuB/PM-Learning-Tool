@@ -1,4 +1,4 @@
-﻿@import url('./src/styles/footer.css');
+﻿@import url("./footer.css");
 
 @font-face {
   font-family: "Geist";
@@ -35,7 +35,7 @@
   --text: #ebeff6;
   --text-soft: #9aa5b6;
   --heading: #f7f9fc;
-  --accent: #7bb0ff;
+  --accent: #7bffe9;
   --accent-soft: rgba(123, 176, 255, 0.14);
 }
 
@@ -81,7 +81,6 @@ pre {
 .topbar,
 .page-shell,
 .course-nav,
-.footer,
 .quiz-modal {
   background: var(--bg);
   border: 0;
@@ -203,15 +202,32 @@ h3 {
 
 h1 {
   font-size: clamp(2.4rem, 4vw, 4.8rem);
-  max-width: 12ch;
+  max-width: 18ch;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(2rem, 3vw, 3rem);
 }
 
 h3 {
   font-size: 1.15rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .hero__lede {
@@ -220,15 +236,18 @@ h3 {
   font-size: 1.08rem;
 }
 
-.stats-grid,
+
 .module-grid {
   display: grid;
   gap: 1rem;
+  margin: 2rem 0;
 }
 
 .stats-grid {
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-align: center;
 }
 
 .stat-card,
@@ -237,8 +256,7 @@ h3 {
 .lesson-panel,
 .empty-state,
 .pager__link,
-.flashcard,
-.footer {
+.flashcard {
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -265,28 +283,47 @@ h3 {
 
 .stat-card strong {
   display: block;
-  margin-top: 0.4rem;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   letter-spacing: -0.05em;
 }
 
 .section-heading {
-  margin: 3rem 0 1rem;
+  margin: 3rem 0 4rem;
+}
+
+.section-heading p {
+  margin: 0.5rem 0;
 }
 
 .module-grid {
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 3rem;
 }
 
 .module-card,
 .lesson-card {
   display: grid;
   gap: 0.9rem;
+  border: 2px solid var(--accent-soft);
+  border-radius: 18px;
+  padding: 2.5rem 2.5rem 2.5rem 2rem;
+  cursor: pointer;
+}
+
+.module-card:hover {
+  background: var(--accent-soft);
 }
 
 .module-card__header {
   display: grid;
   gap: 0.45rem;
+}
+
+.module-card__header h3 {
+  font-size: 1.35rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .module-card__footer,
