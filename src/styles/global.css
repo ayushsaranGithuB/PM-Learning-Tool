@@ -230,6 +230,11 @@ h3 {
   color: var(--bg);
 }
 
+.button.disabled {
+  background: var(--accent-soft);
+  color: var(--text-soft);
+}
+
 .hero__lede {
   margin-top: 1rem;
   max-width: 48rem;

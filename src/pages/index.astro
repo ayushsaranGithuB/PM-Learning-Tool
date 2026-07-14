@@ -29,31 +29,39 @@ const modulesWithLessons = modules.map((module) => ({
     </div>
 
     <div class="module-grid">
-      {modulesWithLessons.map((module, index) => {
-        const href = module.lessons[0] ? getLessonUrl(module.lessons[0]) : `/${module.path}/`;
+      {
+        modulesWithLessons.map((module, index) => {
+          const href = module.lessons[0]
+            ? getLessonUrl(module.lessons[0])
+            : `/${module.path}/`;
 
-        return (
-          <a class="module-card module-card--link" href={href}>
-            <div class="module-card__header">
-              <h3>
-                {(index + 1).toLocaleString("en-US", {
-                  minimumIntegerDigits: 2,
-                  useGrouping: false,
-                })}
-                . {module.title}
-              </h3>
-            </div>
-            <p>{module.description}</p>
-            <div class="module-card__footer">
-              <span>
-                {module.lessons.length} lesson
-                {module.lessons.length === 1 ? "" : "s"}
-              </span>
-              <span>{module.lessons[0] ? "Start here →" : "Coming soon"}</span>
-            </div>
-          </a>
-        );
-      })}
+          return (
+            <a class="module-card module-card--link" href={href}>
+              <div class="module-card__header">
+                <h3>
+                  {(index + 1).toLocaleString("en-US", {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false,
+                  })}
+                  . {module.title}
+                </h3>
+              </div>
+              <p>{module.description}</p>
+              <div class="module-card__footer">
+                <span>
+                  {module.lessons.length} lesson
+                  {module.lessons.length === 1 ? "" : "s"}
+                </span>
+                <span
+                  class={`button ${module.lessons[0] ? "primary" : "disabled"}`}
+                >
+                  {module.lessons[0] ? "Start here →" : "Coming soon"}
+                </span>
+              </div>
+            </a>
+          );
+        })
+      }
     </div>
   </section>
 </BaseLayout>
