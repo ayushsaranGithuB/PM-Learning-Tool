@@ -36,13 +36,34 @@ const lessonModules = import.meta.glob(["../../content/**/*.md", "!../../content
 
 export function getLessons(): Lesson[] {
   return Object.entries(lessonModules)
-    .map(([id, lesson]) => ({
-      id,
-      data: lesson.frontmatter,
-      Content: lesson.Content,
-      rawContent: lesson.rawContent(),
-      getHeadings: lesson.getHeadings
-    }))
+    .map(([id, lesson]) => {
+      // Validate frontmatter presence and required fields
+      const fm = lesson.frontmatter;
+      if (
+        !fm ||
+        typeof fm.title !== "string" ||
+        typeof fm.slug !== "string" ||
+        typeof fm.module !== "string" ||
+        typeof fm.order !== "number" ||
+        (fm.status !== "draft" && fm.status !== "published") ||
+        typeof fm.estimatedMinutes !== "number" ||
+        !Array.isArray(fm.prerequisites) ||
+        !Array.isArray(fm.recommendedReading) ||
+        !Array.isArray(fm.flashcards)
+      ) {
+        console.warn(`Invalid frontmatter in lesson ${id}, skipping.`);
+        return null;
+      }
+
+      return {
+        id,
+        data: fm,
+        Content: lesson.Content,
+        rawContent: lesson.rawContent(),
+        getHeadings: lesson.getHeadings
+      };
+    })
+    .filter((lesson): lesson is Lesson => lesson !== null)
     .sort((a, b) => {
       if (a.data.module !== b.data.module) {
         return a.data.module.localeCompare(b.data.module);

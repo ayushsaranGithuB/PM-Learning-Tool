@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Markdown Frontmatter Schema",
+  "type": "object",
+  "required": [
+    "title",
+    "slug",
+    "module",
+    "order",
+    "status",
+    "estimatedMinutes",
+    "prerequisites",
+    "recommendedReading",
+    "flashcards"
+  ],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "published"]
+    },
+    "estimatedMinutes": {
+      "type": "integer"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedReading": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "url", "required"],
+        "properties": {
+          "title": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "flashcards": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

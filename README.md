@@ -1,46 +1,78 @@
-# Product Management for Builders
+# PM Learning Tool
 
-An evolving learning resource for engineers and designers who want to think more like product managers.
+## Frontmatter Schema and Validation
 
-This repository is intentionally content-first. It starts small, grows lesson by lesson, and is designed to become both:
+This project uses a strict frontmatter schema for all markdown content files to ensure consistency and prevent site build errors.
 
-- a personal learning archive
-- a future public resource
+### Frontmatter Schema
 
-## Current Goal
+The schema is defined in `schemas/frontmatter.schema.json`. It requires the following fields:
 
-Build a lightweight foundation for a course-like website that can eventually be powered by Astro, while keeping content easy to write in Markdown or MDX.
+- `title` (string)
+- `slug` (string)
+- `module` (string)
+- `order` (integer)
+- `status` ("draft" or "published")
+- `estimatedMinutes` (integer)
+- `prerequisites` (array of strings)
+- `recommendedReading` (array of objects with `title`, `url`, and `required` boolean)
+- `flashcards` (array of strings)
 
-## Principles
+### Validation Script
 
-- Start with lessons, not platform complexity.
-- Publish only what is understood well enough to explain clearly.
-- Prefer original teaching over article summaries.
-- Make the structure friendly to future progress tracking, flashcards, and reading checklists.
+A validation script is provided at `scripts/validate-frontmatter.js`. It:
 
-## Repository Shape
+- Recursively scans all `.md` files in the `content/` directory
+- Extracts and parses frontmatter
+- Validates frontmatter against the schema
+- Logs errors and fails if any frontmatter is invalid
 
-```text
-docs/
-content/
-  01-foundations/
-  02-product-thinking/
-  03-strategy/
-  04-discovery/
-  05-execution/
-  06-analytics/
-  07-growth/
-  08-leadership/
-  09-careers/
+### Usage
+
+Run the validation script before committing or building the site:
+
+```bash
+node scripts/validate-frontmatter.js
 ```
 
-## How To Work In This Repo
+### Pre-commit Hook (Optional)
 
-1. Add or update a lesson in `content/`.
-2. Keep the lesson in your own words.
-3. Add recommended reading and flashcards.
-4. Update `docs/curriculum.md` when a lesson is added.
+To prevent invalid frontmatter from entering the repo, you can set up a pre-commit hook using [husky](https://typicode.github.io/husky/#/) and [lint-staged](https://github.com/okonet/lint-staged):
 
-## Next Step
+1. Install dependencies:
 
-The next implementation pass can scaffold Astro around this content model without changing the authoring workflow.
+```bash
+npm install --save-dev husky lint-staged
+```
+
+2. Add to `package.json`:
+
+```json
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+"lint-staged": {
+  "content/**/*.md": ["node scripts/validate-frontmatter.js"]
+}
+```
+
+3. Initialize husky:
+
+```bash
+npx husky install
+```
+
+### Guidelines for AI Coding Agents
+
+When using AI coding agents (Claude, Copilot, Cline + OpenRouter):
+
+- Provide the frontmatter schema or example frontmatter as context in prompts
+- Instruct agents to always include all required frontmatter fields with correct types
+- Use the validation script to verify AI-generated content before committing
+- Correct any frontmatter issues flagged by validation before merging
+
+---
+
+Following these steps will help maintain frontmatter consistency and prevent site build errors caused by malformed frontmatter.
