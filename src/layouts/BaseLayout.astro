@@ -1,4 +1,4 @@
-﻿---
+---
 import CourseNav from "../components/CourseNav.astro";
 import { getLessons } from "../lib/lessons";
 import ThemeToggle from "../components/ThemeToggle.astro";
@@ -59,28 +59,28 @@ const totalReading = lessons.reduce(
         </div>
       </main>
 
-      <footer class="footer">
-        <div class="footer__inner">
+      <footer class="mt-12 pt-6 pb-8 border-t-2 border-gray-200 dark:border-gray-700">
+        <div class="flex flex-wrap justify-between gap-4 items-center px-0 py-6">
           <div>
-            <h3>PM Learning Tool.</h3>
-            <p>A personal notebook for builders learning product management.</p>
+            <h3 class="mb-0">PM Learning Tool.</h3>
+            <p class="text-xs tracking-wide mt-1">A personal notebook for builders learning product management.</p>
           </div>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <span class="stat-card__label">Modules</span>
-              <strong>{modules.length}</strong>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <div class="text-center">
+              <span class="text-xs text-gray-500 dark:text-gray-400">Modules</span>
+              <strong class="block text-lg tracking-tight">{modules.length}</strong>
             </div>
-            <div class="stat-card">
-              <span class="stat-card__label">Lessons</span>
-              <strong>{totalLessons}</strong>
+            <div class="text-center">
+              <span class="text-xs text-gray-500 dark:text-gray-400">Lessons</span>
+              <strong class="block text-lg tracking-tight">{totalLessons}</strong>
             </div>
-            <div class="stat-card">
-              <span class="stat-card__label">Reading Links</span>
-              <strong>{totalReading}</strong>
+            <div class="text-center">
+              <span class="text-xs text-gray-500 dark:text-gray-400">Reading Links</span>
+              <strong class="block text-lg tracking-tight">{totalReading}</strong>
             </div>
-            <div class="stat-card">
-              <span class="stat-card__label">Drafts</span>
-              <strong>{draftedLessons}</strong>
+            <div class="text-center">
+              <span class="text-xs text-gray-500 dark:text-gray-400">Drafts</span>
+              <strong class="block text-lg tracking-tight">{draftedLessons}</strong>
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 ﻿@import "tailwindcss";
-@import url("./footer.css");
 
 @theme {
   --color-accent: var(--accent);
