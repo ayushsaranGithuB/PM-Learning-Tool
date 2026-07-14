@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { modules } from "../lib/modules";
+import { getLessons } from "../lib/lessons";
+import { getLessonUrl, getModuleUrl } from "../lib/lessons";
+
+const lessons = getLessons();
+const modulesWithLessons = modules.map((module) => ({
+  ...module,
+  lessons: lessons
+    .filter((lesson) => lesson.data.module === module.id)
+    .sort((a, b) => a.data.order - b.data.order),
+}));
+---
+
+<BaseLayout title="Curriculum - PM Learning Tool" description="Complete curriculum for learning product management">
+  <section class="content-section">
+    <div class="section-heading">
+      <h1>Curriculum</h1>
+      <p>Complete learning path for product management</p>
+    </div>
+
+    <div class="module-grid">
+      {
+        modulesWithLessons.map((module, index) => {
+          const moduleHref = getModuleUrl(module.id);
+          
+          return (
+            <div class="module-card">
+              <div class="module-card__header">
+                <h3>
+                  {(index + 1).toLocaleString("en-US", {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false,
+                  })}
+                  . {module.title}
+                </h3>
+              </div>
+              <p>{module.description}</p>
+              <div class="module-card__footer">
+                <span>
+                  {module.lessons.length} lesson
+                  {module.lessons.length === 1 ? "" : "s"}
+                </span>
+              </div>
+              
+              {module.lessons.length > 0 && (
+                <div class="lesson-list">
+                  <ul>
+                    {module.lessons.map((lesson) => {
+                      const href = getLessonUrl(lesson);
+                      return (
+                        <li key={lesson.slug}>
+                          <a href={href}>{lesson.data.title}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

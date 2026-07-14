@@ -1,48 +1,37 @@
-﻿---
-import type { Lesson } from "../lib/lessons";
-import { getLessonUrl, getModuleUrl } from "../lib/lessons";
-import { modules } from "../lib/modules";
-
+---
 type Props = {
-  lessons: Lesson[];
   currentPath: string;
 };
 
-const { lessons, currentPath } = Astro.props;
-
-const grouped = modules.map((module) => ({
-  ...module,
-  lessons: lessons
-    .filter((lesson) => lesson.data.module === module.id)
-    .sort((a, b) => a.data.order - b.data.order)
-}));
+const { currentPath } = Astro.props;
 ---
 
-<div class="course-nav">
+<div class="course-nav flex">
   <a class="course-nav__brand" href="/">PM Learning Tool</a>
-  <nav class="course-nav__modules" aria-label="Course modules">
-    {grouped.map((module) => {
-      const moduleHref = getModuleUrl(module.id);
-      const isModuleActive = currentPath === moduleHref;
-
-      return (
-        <a class:list={["course-nav__module", { "is-active": isModuleActive }]} href={moduleHref}>
-          <span>{module.title}</span>
-          <span>{module.lessons.length}</span>
-        </a>
-      );
-    })}
-  </nav>
-  <nav class="course-nav__lessons" aria-label="Lessons in current module">
-    {grouped.find((module) => currentPath.startsWith(`/${module.path}/`))?.lessons.map((lesson) => {
-      const href = getLessonUrl(lesson);
-      const isActive = currentPath === href;
-
-      return (
-        <a class:list={["course-nav__lesson", { "is-active": isActive }]} href={href}>
-          {lesson.data.title}
-        </a>
-      );
-    })}
+  <nav class="course-nav__modules" aria-label="Main navigation">
+    <a
+      class:list={["course-nav__module", { "is-active": currentPath === "/" }]}
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      class:list={[
+        "course-nav__module",
+        { "is-active": currentPath === "/lessons" },
+      ]}
+      href="/lessons"
+    >
+      Lessons
+    </a>
+    <a
+      class:list={[
+        "course-nav__module",
+        { "is-active": currentPath === "/resources" },
+      ]}
+      href="/resources"
+    >
+      Resources
+    </a>
   </nav>
 </div>
