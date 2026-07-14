@@ -1,0 +1,28 @@
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+  <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">Sun</span>
+  <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true">Moon</span>
+</button>
+
+<script>
+  const root = document.documentElement;
+  const storageKey = "pm-learning-theme";
+  const button = document.querySelector("[data-theme-toggle]");
+
+  const applyTheme = (theme) => {
+    root.dataset.theme = theme;
+  };
+
+  const getPreferredTheme = () => {
+    const saved = localStorage.getItem(storageKey);
+    if (saved === "light" || saved === "dark") return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  applyTheme(getPreferredTheme());
+
+  button?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    localStorage.setItem(storageKey, nextTheme);
+    applyTheme(nextTheme);
+  });
+</script>

@@ -1,0 +1,64 @@
+---
+import type { Lesson } from "../lib/lessons";
+import { getLessonUrl, getModuleUrl } from "../lib/lessons";
+import { modules } from "../lib/modules";
+
+type Props = {
+  lessons: Lesson[];
+  currentPath: string;
+};
+
+const { lessons, currentPath } = Astro.props;
+
+const grouped = modules.map((module) => ({
+  ...module,
+  lessons: lessons
+    .filter((lesson) => lesson.data.module === module.id)
+    .sort((a, b) => a.data.order - b.data.order)
+}));
+---
+
+<aside class="sidebar">
+  <div class="sidebar__intro">
+    <a class="sidebar__brand" href="/">PM Learning Tool</a>
+    <p class="sidebar__blurb">
+      A personal notebook for learning product management from the perspective of a builder.
+    </p>
+  </div>
+
+  <nav class="sidebar__nav" aria-label="Course navigation">
+    {
+      grouped.map((module) => {
+        const moduleHref = getModuleUrl(module.id);
+        const isModuleActive = currentPath === moduleHref;
+
+        return (
+          <section class="sidebar__section">
+            <a class:list={["sidebar__section-link", { "is-active": isModuleActive }]} href={moduleHref}>
+              <span class="sidebar__section-title">{module.title}</span>
+              <span class="sidebar__section-count">{module.lessons.length}</span>
+            </a>
+            {module.lessons.length > 0 ? (
+              <ul class="sidebar__lesson-list">
+                {module.lessons.map((lesson) => {
+                  const href = getLessonUrl(lesson);
+                  const isActive = currentPath === href;
+
+                  return (
+                    <li>
+                      <a class:list={["sidebar__lesson-link", { "is-active": isActive }]} href={href}>
+                        {lesson.data.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p class="sidebar__empty">No lessons yet.</p>
+            )}
+          </section>
+        );
+      })
+    }
+  </nav>
+</aside>

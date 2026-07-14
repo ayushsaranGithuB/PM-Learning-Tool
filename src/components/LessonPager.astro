@@ -1,0 +1,33 @@
+---
+import type { Lesson } from "../lib/lessons";
+import { getLessonUrl } from "../lib/lessons";
+
+type Props = {
+  previous?: Lesson;
+  next?: Lesson;
+};
+
+const { previous, next } = Astro.props;
+---
+
+{(previous || next) && (
+  <nav class="pager" aria-label="Lesson pager">
+    {previous ? (
+      <a class="pager__link" href={getLessonUrl(previous)}>
+        <span class="pager__label">Previous</span>
+        <strong>{previous.data.title}</strong>
+      </a>
+    ) : (
+      <span />
+    )}
+
+    {next ? (
+      <a class="pager__link pager__link--next" href={getLessonUrl(next)}>
+        <span class="pager__label">Next</span>
+        <strong>{next.data.title}</strong>
+      </a>
+    ) : (
+      <span />
+    )}
+  </nav>
+)}

@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLessonUrl, getLessons } from "../../lib/lessons";
+import { modules } from "../../lib/modules";
+
+export function getStaticPaths() {
+  return modules.map((module) => ({
+    params: { module: module.path },
+    props: { module }
+  }));
+}
+
+const { module } = Astro.props;
+const lessons = getLessons()
+  .filter((lesson) => lesson.data.module === module.id)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title={`${module.title} | PM Learning Tool`} description={module.description}>
+  <section class="page-heading">
+    <p class="eyebrow">{module.path}</p>
+    <h1>{module.title}</h1>
+    <p>{module.description}</p>
+  </section>
+
+  <section class="content-section">
+    {lessons.length > 0 ? (
+      <div class="lesson-list">
+        {lessons.map((lesson) => (
+          <article class="lesson-card">
+            <div class="lesson-card__meta">
+              <span>{lesson.data.estimatedMinutes} min</span>
+              <span>{lesson.data.status}</span>
+            </div>
+            <h2><a href={getLessonUrl(lesson)}>{lesson.data.title}</a></h2>
+            <p>{lesson.rawContent.slice(0, 180).replace(/\s+/g, " ").trim()}...</p>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>No lessons yet</h2>
+        <p>This module has a place in the path, but its notes have not been written yet.</p>
+      </div>
+    )}
+  </section>
+</BaseLayout>

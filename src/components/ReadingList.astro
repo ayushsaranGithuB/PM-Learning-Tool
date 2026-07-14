@@ -1,0 +1,31 @@
+---
+type Reading = {
+  title: string;
+  url: string;
+  required: boolean;
+};
+
+type Props = {
+  items: Reading[];
+};
+
+const { items } = Astro.props;
+---
+
+<section class="lesson-panel">
+  <h2>Recommended Reading</h2>
+  {items.length > 0 ? (
+    <ul class="checklist">
+      {items.map((item) => (
+        <li>
+          <a href={item.url} target="_blank" rel="noreferrer">{item.title}</a>
+          <span class:list={["pill", item.required ? "pill--solid" : "pill--muted"]}>
+            {item.required ? "Required" : "Optional"}
+          </span>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="lesson-panel__empty">No external reading added yet.</p>
+  )}
+</section>
