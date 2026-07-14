@@ -1,0 +1,14 @@
+.footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0 2rem;
+    color: var(--text-soft);
+    border-top: 2px solid rgba(127, 127, 127, 0.18);
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}

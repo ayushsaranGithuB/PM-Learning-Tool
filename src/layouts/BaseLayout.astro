@@ -1,4 +1,4 @@
----
+﻿---
 import CourseNav from "../components/CourseNav.astro";
 import { getLessons } from "../lib/lessons";
 import ThemeToggle from "../components/ThemeToggle.astro";
@@ -41,6 +41,17 @@ const lessons = getLessons();
           <slot />
         </div>
       </main>
+
+      <footer class="footer">
+        <div class="footer__inner">
+        <h3>
+          PM Learning Tool. 
+        </h3>
+          <p>
+            A personal notebook for builders learning product management.</p>
+          <p>Write one lesson at a time. Keep the notes honest. Keep the pace sustainable.</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

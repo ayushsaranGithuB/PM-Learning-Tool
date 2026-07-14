@@ -1,0 +1,136 @@
+﻿---
+import type { Flashcard } from "../lib/flashcards";
+
+type Props = {
+  cards: Flashcard[];
+  title: string;
+};
+
+const { cards, title } = Astro.props;
+---
+
+<div class="quiz-launch">
+  <div>
+    <p class="eyebrow">Quiz</p>
+    <h2>Take the Quiz - {cards.length} Cards</h2>
+  </div>
+  <button class="quiz-launch__button" type="button" data-quiz-open>
+    Start review
+  </button>
+</div>
+
+<dialog class="quiz-modal" data-quiz-modal aria-label={`${title} quiz`}>
+  <div class="quiz-modal__shell">
+    <div class="quiz-modal__header">
+      <div>
+        <p class="eyebrow">Flashcards</p>
+        <h2>{title}</h2>
+      </div>
+      <button class="quiz-btn quiz-btn--icon" type="button" data-quiz-close aria-label="Close quiz">×</button>
+    </div>
+
+    <div class="quiz-card" data-quiz-state="card">
+      <p class="quiz-card__progress" data-quiz-progress></p>
+      <p class="quiz-card__prompt" data-quiz-prompt></p>
+      <div class="quiz-card__actions">
+        <button class="quiz-btn quiz-btn--icon" type="button" data-quiz-prev aria-label="Previous card">←</button>
+        <button class="quiz-btn quiz-btn--danger" type="button" data-quiz-skip>I dont know this [x]</button>
+        <button class="quiz-btn quiz-btn--primary" type="button" data-quiz-know>I know this [tick]</button>
+        <button class="quiz-btn quiz-btn--icon" type="button" data-quiz-next aria-label="Next card">→</button>
+      </div>
+    </div>
+
+    <div class="quiz-results" data-quiz-state="results" hidden>
+      <h3>Results</h3>
+      <p data-quiz-summary></p>
+      <ul class="quiz-results__list" data-quiz-review-list></ul>
+    </div>
+
+    <div class="quiz-modal__footer">
+      <span data-quiz-counter></span>
+      <button class="quiz-btn" type="button" data-quiz-finish>Finish</button>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline define:vars={{ cards }}>
+  const openButton = document.querySelector("[data-quiz-open]");
+  const modal = document.querySelector("[data-quiz-modal]");
+  const closeButton = document.querySelector("[data-quiz-close]");
+  const finishButton = document.querySelector("[data-quiz-finish]");
+  const prevButton = document.querySelector("[data-quiz-prev]");
+  const nextButton = document.querySelector("[data-quiz-next]");
+  const knowButton = document.querySelector("[data-quiz-know]");
+  const skipButton = document.querySelector("[data-quiz-skip]");
+  const promptEl = document.querySelector("[data-quiz-prompt]");
+  const progressEl = document.querySelector("[data-quiz-progress]");
+  const counterEl = document.querySelector("[data-quiz-counter]");
+  const summaryEl = document.querySelector("[data-quiz-summary]");
+  const reviewListEl = document.querySelector("[data-quiz-review-list]");
+  const cardView = document.querySelector('[data-quiz-state="card"]');
+  const resultsView = document.querySelector('[data-quiz-state="results"]');
+  const lessonPath = window.location.pathname;
+
+  let index = 0;
+  const answers = cards.map(() => null);
+
+  function renderCard() {
+    const card = cards[index];
+    promptEl.textContent = card.prompt;
+    progressEl.textContent = `Card ${index + 1} of ${cards.length}`;
+    counterEl.textContent = `${cards.length - index - 1} left after this`;
+  }
+
+  function renderResults() {
+    const missed = cards
+      .map((card, i) => ({ card, result: answers[i] }))
+      .filter((entry) => entry.result !== "known");
+
+    cardView.hidden = true;
+    resultsView.hidden = false;
+    summaryEl.textContent = missed.length === 0
+      ? "Clean run. You marked every card as known."
+      : `You marked ${missed.length} card(s) as unknown. Review the lesson page below.`;
+
+    reviewListEl.innerHTML = "";
+    missed.forEach(({ card }) => {
+      const item = document.createElement("li");
+      item.innerHTML = `<strong>${card.prompt}</strong><div><a href="${lessonPath}">Review lesson</a></div>`;
+      reviewListEl.appendChild(item);
+    });
+  }
+
+  function move(step) {
+    index = Math.max(0, Math.min(cards.length - 1, index + step));
+    renderCard();
+  }
+
+  function mark(result) {
+    answers[index] = result;
+    if (index < cards.length - 1) {
+      index += 1;
+      renderCard();
+    } else {
+      renderResults();
+    }
+  }
+
+  openButton?.addEventListener("click", () => {
+    modal?.showModal();
+    index = 0;
+    answers.fill(null);
+    cardView.hidden = false;
+    resultsView.hidden = true;
+    renderCard();
+  });
+  closeButton?.addEventListener("click", () => modal?.close());
+  finishButton?.addEventListener("click", () => renderResults());
+  prevButton?.addEventListener("click", () => move(-1));
+  nextButton?.addEventListener("click", () => move(1));
+  knowButton?.addEventListener("click", () => mark("known"));
+  skipButton?.addEventListener("click", () => mark("unknown"));
+
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+</script>

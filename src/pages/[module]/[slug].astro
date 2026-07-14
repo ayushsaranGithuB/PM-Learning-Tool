@@ -1,7 +1,7 @@
----
+﻿---
 import LessonPager from "../../components/LessonPager.astro";
 import ReadingList from "../../components/ReadingList.astro";
-import Flashcards from "../../components/Flashcards.astro";
+import QuizModal from "../../components/QuizModal.astro";
 import LessonLayout from "../../layouts/LessonLayout.astro";
 import { getLessons } from "../../lib/lessons";
 import { getFlashcardsForLesson } from "../../lib/flashcards";
@@ -60,7 +60,7 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
     <div class="lesson-columns">
       <div class="lesson-article prose">
         <Content />
-        <Flashcards cards={flashcards} />
+        <QuizModal cards={flashcards} title={lesson.data.title} />
         <LessonPager previous={previous} next={next} />
       </div>
 
