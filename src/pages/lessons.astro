@@ -20,15 +20,15 @@ const modulesWithLessons = modules.map((module) => ({
       <p class="text-lg text-gray-600">Complete learning path for product management</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid gap-4 md:gap-8 mt-8 mb-8 md:grid-cols-1 lg:grid-cols-2">
       {
         modulesWithLessons.map((module, index) => {
           const moduleHref = getModuleUrl(module.id);
           
           return (
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-              <div class="border-b border-gray-200 pb-4 mb-4">
-                <h3 class="text-xl font-semibold">
+            <div class="module-card">
+              <div class="module-card__header">
+                <h3>
                   {(index + 1).toLocaleString("en-US", {
                     minimumIntegerDigits: 2,
                     useGrouping: false,
@@ -36,22 +36,22 @@ const modulesWithLessons = modules.map((module) => ({
                   . {module.title}
                 </h3>
               </div>
-              <p class="text-gray-600 mb-4">{module.description}</p>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">
+              <p>{module.description}</p>
+              <div class="module-card__footer">
+                <span>
                   {module.lessons.length} lesson
                   {module.lessons.length === 1 ? "" : "s"}
                 </span>
               </div>
               
               {module.lessons.length > 0 && (
-                <div class="mt-4">
-                  <ul class="space-y-2">
+                <div class="lesson-list">
+                  <ul>
                     {module.lessons.map((lesson) => {
                       const href = getLessonUrl(lesson);
                       return (
                         <li key={lesson.slug}>
-                          <a href={href} class="text-blue-600 hover:text-blue-800 hover:underline">{lesson.data.title}</a>
+                          <a href={href}>{lesson.data.title}</a>
                         </li>
                       );
                     })}

@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme {
   --color-accent: var(--accent);
@@ -207,12 +207,6 @@ h3 {
 }
 
 
-.module-grid {
-  display: grid;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
 .stats-grid {
   display: flex;
   flex-wrap: wrap;
@@ -263,11 +257,6 @@ h3 {
 
 .section-heading p {
   margin: 0.5rem 0;
-}
-
-.module-grid {
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  gap: 3rem;
 }
 
 .module-card,

@@ -20,7 +20,7 @@ const modulesWithLessons = modules.map((module) => ({
       <p>Complete learning path for product management</p>
     </div>
 
-    <div class="module-grid">
+    <div class="grid gap-4 md:gap-8 mt-8 mb-8 md:grid-cols-1 lg:grid-cols-2">
       {
         modulesWithLessons.map((module, index) => {
           const moduleHref = getModuleUrl(module.id);
@@ -50,7 +50,7 @@ const modulesWithLessons = modules.map((module) => ({
                     {module.lessons.map((lesson) => {
                       const href = getLessonUrl(lesson);
                       return (
-                        <li key={lesson.slug}>
+                        <li >
                           <a href={href}>{lesson.data.title}</a>
                         </li>
                       );
