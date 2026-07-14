@@ -6,7 +6,7 @@ import { modules } from "../../lib/modules";
 export function getStaticPaths() {
   return modules.map((module) => ({
     params: { module: module.path },
-    props: { module }
+    props: { module },
   }));
 }
 
@@ -16,32 +16,44 @@ const lessons = getLessons()
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title={`${module.title} | PM Learning Tool`} description={module.description}>
+<BaseLayout
+  title={`${module.title} | PM Learning Tool`}
+  description={module.description}
+>
   <section class="page-heading">
     <p class="eyebrow">{module.path}</p>
-    <h1>{module.title}</h1>
+    <h1 class="max-w-[70%] font-bold">{module.title}</h1>
     <p>{module.description}</p>
   </section>
 
   <section class="content-section">
-    {lessons.length > 0 ? (
-      <div class="lesson-list">
-        {lessons.map((lesson) => (
-          <article class="lesson-card">
-            <div class="lesson-card__meta">
-              <span>{lesson.data.estimatedMinutes} min</span>
-              <span>{lesson.data.status}</span>
-            </div>
-            <h2><a href={getLessonUrl(lesson)}>{lesson.data.title}</a></h2>
-            <p>{lesson.rawContent.slice(0, 180).replace(/\s+/g, " ").trim()}...</p>
-          </article>
-        ))}
-      </div>
-    ) : (
-      <div class="empty-state">
-        <h2>No lessons yet</h2>
-        <p>This module has a place in the path, but its notes have not been written yet.</p>
-      </div>
-    )}
+    {
+      lessons.length > 0 ? (
+        <div class="lesson-list">
+          {lessons.map((lesson) => (
+            <article class="lesson-card">
+              <div class="lesson-card__meta">
+                <span>{lesson.data.estimatedMinutes} min</span>
+                <span>{lesson.data.status}</span>
+              </div>
+              <h2>
+                <a href={getLessonUrl(lesson)}>{lesson.data.title}</a>
+              </h2>
+              <p>
+                {lesson.rawContent.slice(0, 180).replace(/\s+/g, " ").trim()}...
+              </p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <h2>No lessons yet</h2>
+          <p>
+            This module has a place in the path, but its notes have not been
+            written yet.
+          </p>
+        </div>
+      )
+    }
   </section>
 </BaseLayout>

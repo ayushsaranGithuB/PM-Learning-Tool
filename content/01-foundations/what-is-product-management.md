@@ -19,21 +19,19 @@ flashcards:
   - what-is-pm-03
 ---
 
-# What Is Product Management?
+Product management is one of those jobs that looks vague from the outside. Engineers write code. Designers shape interfaces. Marketers run campaigns. A PM can seem like the person in the middle who schedules meetings and moves tickets around.
 
-## Learning Objectives
+That picture is incomplete.
+
+The real reason product management exists is that teams need someone thinking clearly about what problem matters, why it matters now, and how the team will know whether solving it actually worked.
+
+### Learning Objectives
 
 - Understand the core job of a product manager
 - Distinguish outcomes from outputs
 - See why PM work sits between business, design, and engineering
 
 ## Why This Matters
-
-Product management is one of those jobs that looks vague from the outside. Engineers write code. Designers shape interfaces. Marketers run campaigns. A PM can seem like the person in the middle who schedules meetings and moves tickets around.
-
-That picture is incomplete.
-
-The real reason product management exists is that teams need someone thinking clearly about what problem matters, why it matters now, and how the team will know whether solving it actually worked.
 
 ## Core Idea
 

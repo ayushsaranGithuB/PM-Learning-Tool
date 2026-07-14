@@ -20,12 +20,12 @@ export function getStaticPaths() {
     return {
       params: {
         module: module.path,
-        slug: lesson.data.slug
+        slug: lesson.data.slug,
       },
       props: {
         lesson,
-        allLessons
-      }
+        allLessons,
+      },
     };
   });
 }
@@ -39,7 +39,8 @@ if (!module) {
 
 const currentIndex = lessons.findIndex((entry) => entry.id === lesson.id);
 const previous = currentIndex > 0 ? lessons[currentIndex - 1] : undefined;
-const next = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : undefined;
+const next =
+  currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : undefined;
 const headings = await lesson.getHeadings();
 const Content = lesson.Content;
 const flashcards = getFlashcardsForLesson(lesson.data.slug);
@@ -49,7 +50,7 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
   <article class="lesson-page">
     <header class="page-heading">
       <p class="eyebrow">{module.title}</p>
-      <h1>{lesson.data.title}</h1>
+      <h1 class="max-w-[70%] font-bold">{lesson.data.title}</h1>
       <div class="lesson-meta">
         <span>{lesson.data.estimatedMinutes} min read</span>
         <span>{lesson.data.flashcards.length} flashcards</span>
@@ -65,18 +66,22 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
       </div>
 
       <aside class="lesson-sidebar">
-        {headings.length > 0 && (
-          <section class="lesson-panel">
-            <h2>On This Page</h2>
-            <ul class="toc">
-              {headings.filter((heading) => heading.depth <= 2).map((heading) => (
-                <li>
-                  <a href={`#${heading.slug}`}>{heading.text}</a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        {
+          headings.length > 0 && (
+            <section class="lesson-panel">
+              <h2>On This Page</h2>
+              <ul class="toc">
+                {headings
+                  .filter((heading) => heading.depth <= 2)
+                  .map((heading) => (
+                    <li>
+                      <a href={`#${heading.slug}`}>{heading.text}</a>
+                    </li>
+                  ))}
+              </ul>
+            </section>
+          )
+        }
 
         <ReadingList items={lesson.data.recommendedReading} />
       </aside>
