@@ -93,5 +93,18 @@ Use these as quick recall prompts after reading the lesson.
 
 ## Further Reading
 
-- Product Manager Archetype
-- Find, Vet and Close the Best Product Managers
+- [Product Manager Archetype - NN/G](https://www.nngroup.com/articles/product-manager-archetype/)
+- [Find, Vet and Close the Best Product Managers - First Round Review](https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/)
+- [The Product Triad: Design's Role - NN/G](https://www.nngroup.com/articles/the-product-triad-designs-role/)
+
+## Exercise
+
+Pick an app you use daily.
+
+Describe:
+
+- the customer problem
+- the engineering challenge
+- the UX challenge
+
+Try separating these perspectives.

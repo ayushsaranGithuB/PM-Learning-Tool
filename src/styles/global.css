@@ -412,17 +412,30 @@ h3 {
   margin-bottom: 0.85rem;
 }
 
+.prose h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+
 .prose p,
 .prose ul,
 .prose ol {
   font-size: 1.3rem;
-  margin: 0 0 1rem;
+  margin: 0 0 1rem 1rem;
   color: var(--text);
 }
 
 .prose ul,
 .prose ol {
-  padding-left: 1.15rem;
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+.prose ul {
+  list-style-type: disc;
 }
 
 .prose li+li {
@@ -436,7 +449,7 @@ h3 {
 }
 
 .prose blockquote {
-  margin: 1.4rem 0;
+  margin: 1.4rem 0 1.4rem 2rem;
   padding-left: 1rem;
   border-left: 3px solid var(--accent);
   color: var(--text-soft);
@@ -453,6 +466,12 @@ h3 {
   border-radius: 8px;
   background: var(--accent-soft);
   font-size: 0.92em;
+}
+
+.prose hr {
+  margin: 4rem 0;
+  border: 0;
+  border-top: 1px solid rgba(127, 127, 127, 0.18);
 }
 
 .quiz-launch {

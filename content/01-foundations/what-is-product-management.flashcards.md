@@ -1,4 +1,17 @@
-# Flashcards: What Is Product Management?
+---
+title: What Is Product Management? Flashcards
+slug: what-is-product-management
+module: 01-foundations
+order: 1
+status: draft
+estimatedMinutes: 5
+prerequisites: []
+recommendedReading: []
+flashcards:
+  - what-is-pm-01
+  - what-is-pm-02
+  - what-is-pm-03
+---
 
 ## Cards
 
