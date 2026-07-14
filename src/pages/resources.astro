@@ -2,41 +2,201 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Resources - PM Learning Tool" description="PM courses, blogs, and reading materials">
+<BaseLayout
+  title="Resources - PM Learning Tool"
+  description="PM courses, blogs, and reading materials"
+>
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-3xl font-bold mb-4">Resources</h1>
-      <p class="text-lg text-gray-600">PM courses, blogs, and reading materials</p>
+    <div class="text-center mb-16">
+      <h1 class="text-3xl font-bold mb-2">Resources</h1>
+      <p class="text-lg text-gray-600">
+        PM courses, blogs, and reading materials
+      </p>
     </div>
 
     <div class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Recommended PM Courses</h2>
-      <ul class="space-y-2">
-        <li><a href="https://www.coursera.org/specializations/product-management" class="text-blue-600 hover:text-blue-800 hover:underline">Product Management Specialization - Coursera</a></li>
-        <li><a href="https://www.udemy.com/course/productmanagement/" class="text-blue-600 hover:text-blue-800 hover:underline">Product Management Fundamentals - Udemy</a></li>
-        <li><a href="https://www.linkedin.com/learning/product-management-foundations" class="text-blue-600 hover:text-blue-800 hover:underline">Product Management Foundations - LinkedIn Learning</a></li>
-        <li><a href="https://www.productschool.com/" class="text-blue-600 hover:text-blue-800 hover:underline">Product School Courses</a></li>
+      <h2 class="text-2xl font-bold mb-6">Recommended PM Courses</h2>
+      <ul class="space-y-2 pl-2">
+        <li>
+          <a
+            href="https://www.coursera.org/specializations/product-management"
+            class="text-accent hover:underline font-normal"
+            >Product Management Specialization - Coursera</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.udemy.com/course/productmanagement/"
+            class="text-accent hover:underline font-normal"
+            >Product Management Fundamentals - Udemy</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/learning/product-management-foundations"
+            class="text-accent hover:underline font-normal"
+            >Product Management Foundations - LinkedIn Learning</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.productschool.com/"
+            class="text-accent hover:underline font-normal"
+            >Product School Courses</a
+          >
+        </li>
       </ul>
     </div>
-    
+
     <div class="mb-12">
-      <h2 class="text-2xl font-bold mb-4">Suggested Blogs and Reading</h2>
-      <ul class="space-y-2">
-        <li><a href="https://www.svpg.com/articles" class="text-blue-600 hover:text-blue-800 hover:underline">SVPG - Silicon Valley Product Group</a></li>
-        <li><a href="https://www.mindtheproduct.com/" class="text-blue-600 hover:text-blue-800 hover:underline">Mind the Product</a></li>
-        <li><a href="https://www.productplan.com/blog/" class="text-blue-600 hover:text-blue-800 hover:underline">ProductPlan Blog</a></li>
-        <li><a href="https://www.romanpichler.com/blog/" class="text-blue-600 hover:text-blue-800 hover:underline">Roman Pichler's Product Management Blog</a></li>
-        <li><a href="https://blackboxofpm.com/" class="text-blue-600 hover:text-blue-800 hover:underline">The Black Box of Product Management</a></li>
+      <h2 class="text-2xl font-bold mb-6">Suggested Blogs and Reading</h2>
+      <ul class="space-y-2 pl-2">
+        <li>
+          <a
+            href="https://www.svpg.com/articles"
+            class="text-accent hover:underline font-normal"
+            >SVPG - Silicon Valley Product Group</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.mindtheproduct.com/"
+            class="text-accent hover:underline font-normal">Mind the Product</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.productplan.com/blog/"
+            class="text-accent hover:underline font-normal">ProductPlan Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.romanpichler.com/blog/"
+            class="text-accent hover:underline font-normal"
+            >Roman Pichler's Product Management Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://blackboxofpm.com/"
+            class="text-accent hover:underline font-normal"
+            >The Black Box of Product Management</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          Find, Vet and Close the Best Product Managers - First Round Review<br
+          />
+          <a
+            href="https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/"
+            class="text-accent hover:underline font-normal"
+            >https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          Product Manager Archetype - NN/G<br />
+          <a
+            href="https://www.nngroup.com/articles/product-manager-archetype/"
+            class="text-accent hover:underline font-normal"
+            >https://www.nngroup.com/articles/product-manager-archetype/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          The Product Triad: Design's Role - NN/G<br />
+          <a
+            href="https://www.nngroup.com/articles/the-product-triad-designs-role/"
+            class="text-accent hover:underline font-normal"
+            >https://www.nngroup.com/articles/the-product-triad-designs-role/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          “Sweat the Details” and Other Commandments for Mapping Out a Career in
+          Product<br />
+          <a
+            href="https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/"
+            class="text-accent hover:underline font-normal"
+            >https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          17 Product Managers Who Will Own the Future of NYC Tech — and the 9
+          Frameworks They'll Use to Do It<br />
+          <a
+            href="https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/"
+            class="text-accent hover:underline font-normal"
+            >https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          To Build Great Products, Build This Strong, Scalable System First -
+          First Round Review<br />
+          <a
+            href="https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/"
+            class="text-accent hover:underline font-normal"
+            >https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          Why Chefs and Soldiers Make the Best Product Managers - First Round
+          Review<br />
+          <a
+            href="https://review.firstround.com/why-soldiers-and-chefs-make-the-best-product-managers/"
+            class="text-accent hover:underline font-normal"
+            >https://review.firstround.com/why-soldiers-and-chefs-make-the-best-product-managers/</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          Analytics for startups : YC Startup Library | Y Combinator<br />
+          <a
+            href="https://www.ycombinator.com/library/8H-analytics-for-startups"
+            class="text-accent hover:underline font-normal"
+            >https://www.ycombinator.com/library/8H-analytics-for-startups</a
+          >
+        </li>
+        <li class="mb-4 font-semibold">
+          How to set up, hire, and scale a growth strategy and team : YC Startup
+          Library<br />
+          <a
+            href="https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team"
+            class="text-accent hover:underline font-normal"
+            >https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team</a
+          >
+        </li>
       </ul>
     </div>
-    
+
     <div>
-      <h2 class="text-2xl font-bold mb-4">Books</h2>
-      <ul class="space-y-2">
-        <li><a href="https://www.amazon.com/Inspired-Product-Management-Second/dp/1119387507" class="text-blue-600 hover:text-blue-800 hover:underline">Inspired: How to Create Tech Products Customers Love - Marty Cagan</a></li>
-        <li><a href="https://www.amazon.com/Decode-Agile-Management-Engineers-Leading/dp/1732265186" class="text-blue-600 hover:text-blue-800 hover:underline">Decode and Conquer: Answers to Product Management Interviews - Lewis Lin</a></li>
-        <li><a href="https://www.amazon.com/Practical-Product-Management-Transform-Productivity/dp/1491927336" class="text-blue-600 hover:text-blue-800 hover:underline">The Practical Product Manager - Robert Siegel</a></li>
-        <li><a href="https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452637404" class="text-blue-600 hover:text-blue-800 hover:underline">The Design of Everyday Things - Don Norman</a></li>
+      <h2 class="text-2xl font-bold mb-6">Books</h2>
+      <ul class="space-y-2 pl-2">
+        <li>
+          <a
+            href="https://www.amazon.com/Inspired-Product-Management-Second/dp/1119387507"
+            class="text-accent hover:underline font-normal"
+            >Inspired: How to Create Tech Products Customers Love - Marty Cagan</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/Decode-Agile-Management-Engineers-Leading/dp/1732265186"
+            class="text-accent hover:underline font-normal"
+            >Decode and Conquer: Answers to Product Management Interviews -
+            Lewis Lin</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/Practical-Product-Management-Transform-Productivity/dp/1491927336"
+            class="text-accent hover:underline font-normal"
+            >The Practical Product Manager - Robert Siegel</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452637404"
+            class="text-accent hover:underline font-normal"
+            >The Design of Everyday Things - Don Norman</a
+          >
+        </li>
       </ul>
     </div>
   </section>
