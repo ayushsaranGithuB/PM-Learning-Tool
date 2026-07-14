@@ -1,0 +1,30 @@
+﻿---
+import type { Flashcard } from "../lib/flashcards";
+
+type Props = {
+  cards: Flashcard[];
+};
+
+const { cards } = Astro.props;
+---
+
+<section class="lesson-panel">
+  <h2>Flashcards</h2>
+  {cards.length > 0 ? (
+    <div class="flashcard-stack">
+      {cards.map((card, index) => (
+        <details class="flashcard">
+          <summary>
+            <span>Card {index + 1}</span>
+            <strong>{card.prompt}</strong>
+          </summary>
+          <div class="flashcard__answer">
+            <p>{card.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  ) : (
+    <p class="lesson-panel__empty">No flashcards added yet.</p>
+  )}
+</section>

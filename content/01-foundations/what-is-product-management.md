@@ -85,6 +85,14 @@ For designers, the shift is similar. A polished flow can still fail if it solves
 - Think about a product you use often. What problem does it solve well?
 - Think about a feature that felt unnecessary. What question do you think the team failed to answer first?
 
+## Flashcards
+
+Use these as quick recall prompts after reading the lesson.
+
+- A team keeps shipping features, but retention does not improve. What should the PM clarify first?
+- Why is product management better described as decision management than feature management?
+- When a designer, engineer, and PM disagree about the next move, what does the PM contribute?
+
 ## Further Reading
 
 - Product Manager Archetype
