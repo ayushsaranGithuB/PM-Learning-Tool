@@ -1,6 +1,10 @@
 ﻿@import "tailwindcss";
 @import url("./footer.css");
 
+@theme {
+  --color-accent: var(--accent);
+}
+
 @font-face {
   font-family: "Geist";
   src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
@@ -60,7 +64,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -97,40 +100,6 @@ pre {
   padding: 0;
 }
 
-
-.course-nav__brand {
-  font-size: 0.95rem;
-  font-weight: 650;
-  letter-spacing: 0.01em;
-}
-
-.course-nav__modules,
-.course-nav__lessons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.course-nav__module,
-.course-nav__lesson {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.8rem;
-  color: var(--text-soft);
-  background: transparent;
-}
-
-.course-nav__lesson {
-  padding: 0.45rem 0.75rem;
-  font-size: 0.92rem;
-}
-
-.course-nav__module.is-active,
-.course-nav__lesson.is-active {
-  color: var(--heading);
-  background: var(--accent-soft);
-}
 
 .main-shell {
   min-width: 0;
@@ -204,6 +173,10 @@ h2 {
 
 h3 {
   font-size: 1.15rem;
+}
+
+.text-accent {
+  color: var(--accent);
 }
 
 .button {
@@ -343,8 +316,7 @@ h3 {
 .checklist a,
 .toc a,
 .pager__link strong,
-.lesson-card h2 a,
-.course-nav a {
+.lesson-card h2 a {
   color: var(--accent);
 }
 
