@@ -1,4 +1,4 @@
-﻿---
+---
 import LessonPager from "../../components/LessonPager.astro";
 import ReadingList from "../../components/ReadingList.astro";
 import QuizModal from "../../components/QuizModal.astro";
@@ -61,30 +61,12 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
     <div class="lesson-columns">
       <div class="lesson-article prose">
         <Content />
+        <ReadingList items={lesson.data.recommendedReading} />
         <QuizModal cards={flashcards} title={lesson.data.title} />
         <LessonPager previous={previous} next={next} />
       </div>
 
-      <!-- <aside class="lesson-sidebar">
-        {
-          headings.length > 0 && (
-            <section class="lesson-panel">
-              <h2>On This Page</h2>
-              <ul class="toc">
-                {headings
-                  .filter((heading) => heading.depth <= 2)
-                  .map((heading) => (
-                    <li>
-                      <a href={`#${heading.slug}`}>{heading.text}</a>
-                    </li>
-                  ))}
-              </ul>
-            </section>
-          )
-        }
-
-        <ReadingList items={lesson.data.recommendedReading} />
-      </aside> -->
+      <div></div>
     </div>
   </article>
 </LessonLayout>
