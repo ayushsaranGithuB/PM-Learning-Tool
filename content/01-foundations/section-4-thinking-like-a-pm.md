@@ -1,0 +1,98 @@
+---
+title: Section 4 — Thinking Like a Product Manager
+slug: section-4-thinking-like-a-pm
+module: 01-foundations
+order: 5
+status: draft
+estimatedMinutes: 60
+prerequisites: []
+recommendedReading:
+  - title: "Sweat the Details"
+    url: "https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/"
+    required: true
+  - title: "Product Vision and Strategy"
+    url: "https://www.mindtheproduct.com/product-vision-and-strategy-marty-cagan-on-the-product-experience-part-1-of-2/"
+    required: true
+flashcards: []
+---
+
+# Section 4 — Thinking Like a Product Manager
+
+## Learning Goal
+
+Learn to spend more time understanding problems than proposing solutions.
+
+## Reading
+
+### Sweat the Details
+
+https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/
+
+Focus on:
+
+- Understanding the problem
+- Collaborating on solutions
+- Iterating using data
+
+---
+
+### Product Vision and Strategy
+
+https://www.mindtheproduct.com/product-vision-and-strategy-marty-cagan-on-the-product-experience-part-1-of-2/
+
+Pay particular attention to:
+
+- Problems vs Features
+- Product Vision
+- Product Strategy
+
+---
+
+## Key Takeaways
+
+Great PMs ask:
+
+- Why is this a problem?
+- Who experiences it?
+- How often?
+- What evidence do we have?
+
+Rather than immediately asking:
+
+"How should we build this?"
+
+---
+
+# Practical Exercise
+
+Choose a product you use regularly.
+
+Examples:
+
+- Slack
+- Spotify
+- Notion
+- Uber
+- Duolingo
+
+Write a one-page critique covering:
+
+1. Who is the customer?
+2. What problem is the product solving?
+3. Which team model do you think built this product?
+4. What evidence suggests the company is outcome-driven?
+5. If you were the PM, what would you improve first?
+
+---
+
+# Module Summary
+
+By the end of this module you should understand:
+
+- What Product Managers actually do
+- The Product–Design–Engineering partnership
+- The difference between Delivery, Feature and Empowered Product Teams
+- Why Product Management is primarily about understanding problems rather than managing backlogs
+- The daily responsibilities and mindset of successful Product Managers
+
+The remaining modules will build on this foundation by teaching discovery, customer research, prioritization, strategy, analytics and execution.

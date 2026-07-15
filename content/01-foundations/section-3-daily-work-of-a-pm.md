@@ -1,0 +1,71 @@
+---
+title: Section 3 — The Daily Work of a PM
+slug: section-3-daily-work-of-a-pm
+module: 01-foundations
+order: 4
+status: draft
+estimatedMinutes: 60
+prerequisites: []
+recommendedReading:
+  - title: "The Three Roles of a Product Manager"
+    url: "https://www.deciphr.ai/podcast/20-product-lenny-rachitsky-on-the-3-key-roles-of-the-product-manager-5-skills-all-the-best-pms-have-when-to-hire-your-first-pm-how-to-structure-the-hiring-process-for-pms--what-leaders-can-do-to-make-their-pms-successful"
+    required: true
+  - title: "PM 101 Playbook"
+    url: "https://pmplaybook.nasscom.in/"
+    required: true
+  - title: "Product Leadership Rules"
+    url: "https://review.firstround.com/product-leadership-rules-to-live-by-from-my-experience-at-pandora/"
+    required: true
+flashcards: []
+---
+
+# Section 3 — The Daily Work of a PM
+
+## Learning Goal
+
+Understand what Product Managers actually spend their time doing.
+
+## Reading
+
+### The Three Roles of a Product Manager
+
+https://www.deciphr.ai/podcast/20-product-lenny-rachitsky-on-the-3-key-roles-of-the-product-manager-5-skills-all-the-best-pms-have-when-to-hire-your-first-pm-how-to-structure-the-hiring-process-for-pms--what-leaders-can-do-to-make-their-pms-successful
+
+Focus on:
+
+- Shaping
+- Shipping
+- Synchronizing
+
+---
+
+### PM 101 Playbook
+
+https://pmplaybook.nasscom.in/
+
+Read:
+
+"What does a typical day for a Product Manager look like?"
+
+---
+
+### Product Leadership Rules
+
+https://review.firstround.com/product-leadership-rules-to-live-by-from-my-experience-at-pandora/
+
+Focus on communication and influencing without authority.
+
+---
+
+## Key Takeaways
+
+A PM spends much of their time:
+
+- Talking to customers
+- Talking to engineers
+- Talking to designers
+- Making decisions
+- Prioritizing work
+- Aligning stakeholders
+
+The job is less about producing artifacts and more about enabling teams.
