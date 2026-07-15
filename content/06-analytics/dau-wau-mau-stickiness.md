@@ -1,0 +1,26 @@
+---
+title: DAU / WAU / MAU and Stickiness
+slug: dau-wau-mau-stickiness
+module: 06-analytics
+order: 12
+status: draft
+estimatedMinutes: 15
+prerequisites: []
+recommendedReading:
+  - title: "To Build Great Products, Build This Strong, Scalable System First"
+    url: "https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/"
+    required: true
+flashcards: []
+---
+
+# DAU / WAU / MAU and Stickiness
+
+This chapter explains the concepts of Daily Active Users (DAU), Weekly Active Users (WAU), Monthly Active Users (MAU), and the stickiness metric that relates them.
+
+## Recommended Reading
+
+- [To Build Great Products, Build This Strong, Scalable System First](https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/)
+
+## Placeholder Content
+
+Content for this chapter is under development. It will cover how to measure DAU, WAU, MAU, calculate stickiness, and why these metrics matter for product growth and engagement.

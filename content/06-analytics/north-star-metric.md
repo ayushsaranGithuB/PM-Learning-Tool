@@ -1,0 +1,30 @@
+---
+title: North Star Metric
+slug: north-star-metric
+module: 06-analytics
+order: 9
+status: draft
+estimatedMinutes: 15
+prerequisites: []
+recommendedReading:
+  - title: "17 Product Managers Who Will Own the Future of NYC Tech"
+    url: "https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/"
+    required: true
+  - title: "Product Manager vs. Product Marketing Manager Explained"
+    url: "https://productschool.com/blog/career-development/product-manager-vs-product-marketing"
+    required: true
+flashcards: []
+---
+
+# North Star Metric
+
+This chapter introduces the concept of the North Star Metric, a key metric that best captures the core value your product delivers to customers.
+
+## Recommended Reading
+
+- [17 Product Managers Who Will Own the Future of NYC Tech](https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/)
+- [Product Manager vs. Product Marketing Manager Explained](https://productschool.com/blog/career-development/product-manager-vs-product-marketing)
+
+## Placeholder Content
+
+Content for this chapter is under development. It will cover the importance of the North Star Metric, how to identify it, and how it guides product growth and decision-making.
