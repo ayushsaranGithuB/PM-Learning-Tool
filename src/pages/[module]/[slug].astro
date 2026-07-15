@@ -120,5 +120,9 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
       });
     }
 
-    document.addEventListener("DOMContentLoaded", enhanceInlineLinks);
+    document.addEventListener("DOMContentLoaded", () => {
+      enhanceInlineLinks();
+      // Notify the ReadingList to re-scan all checkboxes
+      window.dispatchEvent(new CustomEvent("inline-links-enhanced"));
+    });
   </script>

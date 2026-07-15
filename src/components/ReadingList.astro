@@ -20,15 +20,17 @@ const { items, lessonSlug } = Astro.props;
       <>
         <div class="reading-progress" data-reading-progress>
           <div class="reading-progress-bar">
-            <div class="reading-progress-fill" data-reading-progress-fill></div>
+            <div class="reading-progress-fill" data-reading-progress-fill />
           </div>
-          <span class="reading-progress-text" data-reading-progress-text>0 / 0 read</span>
+          <span class="reading-progress-text" data-reading-progress-text>
+            0 / 0 read
+          </span>
         </div>
         <ul class="checklist">
           {items.map((item) => {
             const storageKey = `pm-reading:${lessonSlug}:${item.url}`;
             return (
-              <li>
+              <li class="flex items-center gap-4 ">
                 <label class="reading-checkbox" data-tooltip="Mark as read">
                   <input
                     type="checkbox"
@@ -37,10 +39,17 @@ const { items, lessonSlug } = Astro.props;
                     data-key={storageKey}
                     aria-label={`Mark "${item.title}" as read`}
                   />
-                  <span class="reading-checkbox-indicator"></span>
+                  <span class="reading-checkbox-indicator" />
                 </label>
-                <a href={item.url} target="_blank" rel="noreferrer">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="block flex flex-col flex-1 !no-underline"
+                >
                   {item.title}
+                  <br />
+                  <span class="text-sm">{item.url}</span>
                 </a>
                 <span
                   class:list={[
@@ -92,10 +101,12 @@ const { items, lessonSlug } = Astro.props;
     updateLessonProgress();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    loadSavedState();
-
+  function attachListeners() {
     document.querySelectorAll("[data-reading-checkbox]").forEach((cb) => {
+      // Avoid attaching duplicate listeners
+      if (cb.dataset.readingListenerAttached) return;
+      cb.dataset.readingListenerAttached = "true";
+
       cb.addEventListener("change", () => {
         const key = cb.getAttribute("data-key");
         if (key) {
@@ -109,5 +120,16 @@ const { items, lessonSlug } = Astro.props;
         window.dispatchEvent(new CustomEvent("reading-progress-update"));
       });
     });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    loadSavedState();
+    attachListeners();
+  });
+
+  // Re-scan when inline links are enhanced by the page script
+  window.addEventListener("inline-links-enhanced", () => {
+    loadSavedState();
+    attachListeners();
   });
 </script>

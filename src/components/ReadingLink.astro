@@ -20,5 +20,17 @@ const storageKey = `pm-reading:${lessonSlug}:${href}`;
     />
     <span class="reading-checkbox-indicator"></span>
   </label>
-  <a href={href} target="_blank" rel="noreferrer"><slot /></a>
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    class="block flex flex-col !no-underline"
+  >
+    <span class="text-lg font-semibold !no-underline">
+      {title ?? title}
+    </span>
+    <span class="underline">
+      {href}
+    </span>
+  </a>
 </span>
