@@ -47,7 +47,11 @@ const totalReading = lessons.reduce(
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <CourseNav lessons={lessons} currentPath={Astro.url.pathname} />
+        <CourseNav lessons={lessons} currentPath={Astro.url.pathname}>
+          <Fragment slot="theme-toggle">
+            <ThemeToggle />
+          </Fragment>
+        </CourseNav>
         <div class="topbar__actions">
           <ThemeToggle />
         </div>

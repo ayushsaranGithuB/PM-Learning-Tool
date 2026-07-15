@@ -12,16 +12,18 @@ const navLinks = [
 ];
 
 import { NotebookText } from "@lucide/astro";
+import HamburgerMenu from "./HamburgerMenu.astro";
 ---
 
-<div class="course-nav flex items-center justify-between flex-1">
-  <a class="font-medium text-accent text-2xl flex gap-3 items-center" href="/">
-    <span class="border border-accent px-2 py-2 border-[0.5px]">
-      <NotebookText />
-    </span>
+<div class="course-nav flex items-center justify-between w-full">
+  <a
+    class="font-medium text-accent text-xl md:text-2xl flex gap-1 items-center"
+    href="/"
+  >
+    <NotebookText />
     PM Learning Tool</a
   >
-  <nav class="flex gap-6" aria-label="Main navigation">
+  <nav class="desktop-nav" aria-label="Main navigation">
     {
       navLinks.map(({ title, url }) => (
         <a
@@ -35,5 +37,11 @@ import { NotebookText } from "@lucide/astro";
         </a>
       ))
     }
+    <slot name="theme-toggle" />
   </nav>
+  <HamburgerMenu currentPath={currentPath}>
+    <Fragment slot="theme-toggle">
+      <slot name="theme-toggle" />
+    </Fragment>
+  </HamburgerMenu>
 </div>

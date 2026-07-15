@@ -1,0 +1,76 @@
+---
+type Props = {
+  currentPath: string;
+};
+
+const { currentPath } = Astro.props;
+
+const navLinks = [
+  { title: "Home", url: "/" },
+  { title: "Lessons", url: "/lessons" },
+  { title: "Resources", url: "/resources" },
+];
+---
+
+<div class="hamburger-menu">
+  <button class="hamburger-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav__inner">
+      {
+        navLinks.map(({ title, url }) => (
+          <a
+            class:list={[
+              "mobile-nav__link",
+              { "is-active": currentPath === url },
+            ]}
+            href={url}
+          >
+            {title}
+          </a>
+        ))
+      }
+      <div class="mobile-nav__theme">
+        <slot name="theme-toggle" />
+      </div>
+    </div>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.querySelector(".hamburger-toggle");
+  const menu = document.querySelector(".mobile-nav");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      menu.classList.toggle("mobile-nav--open");
+      document.body.classList.toggle("mobile-nav-open");
+    });
+
+    // Close menu when a link is clicked
+    menu.querySelectorAll(".mobile-nav__link").forEach((link) => {
+      link.addEventListener("click", () => {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.classList.remove("mobile-nav--open");
+        document.body.classList.remove("mobile-nav-open");
+      });
+    });
+
+    // Close menu on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menu.classList.contains("mobile-nav--open")) {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.classList.remove("mobile-nav--open");
+        document.body.classList.remove("mobile-nav-open");
+        toggle.focus();
+      }
+    });
+  }
+</script>
+</write_to_file>
