@@ -13,29 +13,8 @@ recommendedReading:
   - title: "How to set up, hire, and scale a growth strategy and team : YC Startup Library"
     url: "https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team"
     required: true
-  - title: "17 Product Managers Who Will Own the Future of NYC Tech"
-    url: "https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/"
-    required: false
-  - title: "Product Manager vs. Product Marketing Manager Explained"
-    url: "https://productschool.com/blog/career-development/product-manager-vs-product-marketing"
-    required: false
-  - title: "The Product Triad: Design's Role"
-    url: "https://www.nngroup.com/articles/the-product-triad-designs-role/"
-    required: false
-  - title: "Product and UX: Study Guide (Section: Minimize Design Risk by Focusing on Outcomes)"
-    url: "https://www.nngroup.com/articles/product-and-ux-study-guide/"
-    required: false
   - title: "PRODUCT MANAGEMENT 101 PLAYBOOK (Referenced via Strategic Architecture)"
     url: "https://nasscom.in/deeptech/skills/img/PM101.pdf"
-    required: false
-  - title: "To Build Great Products, Build This Strong, Scalable System First"
-    url: "https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/"
-    required: false
-  - title: "What It Takes to Grow Your Startup 500% in Months"
-    url: "https://review.firstround.com/what-it-takes-to-grow-your-startup-500-in-less-than-a-year/"
-    required: false
-  - title: "Product404 – Marty Cagan (Product Leadership & Teams, OKRs, and more)"
-    url: "https://timwoods.io/2020/09/06/product404-marty-cagan-product-leadership-teams-product-vs-feature-teams-okrs-and-more/"
     required: false
 flashcards: []
 ---
@@ -70,7 +49,6 @@ Read both YC articles before proceeding.
 Required Reading
 
 - Analytics for Startups (YC Startup Library)
-- How to Set Up, Hire, and Scale a Growth Strategy and Team (YC Startup Library)
 
 These articles provide the practical context for the concepts discussed below.
 
