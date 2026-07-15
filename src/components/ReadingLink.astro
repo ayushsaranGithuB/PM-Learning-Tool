@@ -30,7 +30,7 @@ const storageKey = `pm-reading:${lessonSlug}:${href}`;
       {title ?? title}
     </span>
     <span class="underline">
-      {href}
+      {href.length > 150 ? href.slice(0, 150) + "..." : href}
     </span>
   </a>
 </span>
