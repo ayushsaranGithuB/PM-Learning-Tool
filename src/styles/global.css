@@ -413,6 +413,10 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.prose h2:first-of-type {
+  margin-top: 0rem;
+}
+
 
 .prose p,
 .prose ul,
