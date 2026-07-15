@@ -137,6 +137,25 @@ This relationship is often described using three overlapping perspectives:
 
 Great products exist where these three perspectives overlap.
 
+## Reading 1
+
+### The PM at the Intersection of Business, Technology and UX
+
+Estimated time: 10 minutes
+
+https://www.svpg.com/the-intersection-of-business-technology-and-user-experience/
+
+### Why you're reading this
+
+This article introduces one of the most important ideas in Product Management: products only succeed when customer needs, technical feasibility, and business viability overlap.
+
+### After reading, can you answer...
+
+- Why does Product Management exist?
+- Why can't engineering solve product problems alone?
+- What do desirability, feasibility, and viability each represent?
+- Why is Product Management a cross-functional discipline?
+
 ---
 
 ## The Product Manager's Mindset
@@ -237,6 +256,12 @@ Read this article to understand how experienced product leaders evaluate PM cand
 
 ## Reflection
 
+One of the biggest misconceptions about Product Management is that PMs are responsible for having the best ideas.
+
+They're not.
+
+Their value comes from bringing together different perspectives and helping teams make better decisions under uncertainty.
+
 Think about a product you use every day.
 
 Before its first version was built, what questions do you think the Product Manager needed to answer?
@@ -314,13 +339,4 @@ D. Managing software releases
 
 ---
 
-### 5. Complete the sentence.
-
-> Product Management isn't about having all the answers. It's about __________________________.
-
-<details>
-<summary>Answer</summary>
-
-Learning to ask better questions.
-
-</details>
+### 5. - What is the difference between a feature and an outcome?
