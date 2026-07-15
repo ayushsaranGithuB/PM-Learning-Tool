@@ -10,8 +10,6 @@ recommendedReading: []
 flashcards: []
 ---
 
-# Module 1 — What Product Managers Actually Do
-
 ## Learning Objective
 
 Shift your mindset from **Solution Builder** (Engineering) to **Problem Solver** (Product Management). By the end of this module, you should understand what Product Managers do, how they work with design and engineering, and what differentiates high-performing product organizations from feature factories.

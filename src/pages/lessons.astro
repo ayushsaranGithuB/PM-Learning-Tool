@@ -13,45 +13,53 @@ const modulesWithLessons = modules.map((module) => ({
 }));
 ---
 
-<BaseLayout title="Lessons - PM Learning Tool" description="Complete list of product management lessons">
+<BaseLayout
+  title="Lessons - PM Learning Tool"
+  description="Complete list of product management lessons"
+>
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="text-center mb-12">
       <h1 class="text-3xl font-bold mb-4">Lessons</h1>
-      <p class="text-lg text-gray-600">Complete learning path for product management</p>
+      <p class="text-lg text-gray-600">
+        Complete learning path for product management
+      </p>
     </div>
 
-    <div class="grid gap-4 md:gap-8 mt-8 mb-8 md:grid-cols-1 lg:grid-cols-2">
+    <div class="mt-12">
       {
         modulesWithLessons.map((module, index) => {
           const moduleHref = getModuleUrl(module.id);
-          
+
           return (
-            <div class="module-card">
-              <div class="module-card__header">
-                <h3>
+            <div class="mb-12">
+              <div class="mb-4">
+                <h3 class="text-5xl font-semibold mb-3">
                   {(index + 1).toLocaleString("en-US", {
                     minimumIntegerDigits: 2,
                     useGrouping: false,
                   })}
                   . {module.title}
                 </h3>
+                <p class="text-lg text-gray-600">{module.description}</p>
               </div>
-              <p>{module.description}</p>
-              <div class="module-card__footer">
-                <span>
-                  {module.lessons.length} lesson
-                  {module.lessons.length === 1 ? "" : "s"}
-                </span>
-              </div>
-              
+              <p class="text-gray-400 mb-2">
+                {module.lessons.length} lesson
+                {module.lessons.length === 1 ? "" : "s"}
+              </p>
+
               {module.lessons.length > 0 && (
-                <div class="lesson-list">
-                  <ul>
+                <div class="">
+                  <ul class="list-disc list-inside ">
                     {module.lessons.map((lesson) => {
                       const href = getLessonUrl(lesson);
                       return (
-                        <li key={lesson.slug}>
-                          <a href={href}>{lesson.data.title}</a>
+                        <li class="mb-2">
+                          <a
+                            href={href}
+                            class="text-accent text-xl hover:text-blue-800"
+                          >
+                            {lesson.data.title}
+                          </a>
                         </li>
                       );
                     })}
