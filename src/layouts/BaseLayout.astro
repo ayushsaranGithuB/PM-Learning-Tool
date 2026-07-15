@@ -65,7 +65,7 @@ const totalReading = lessons.reduce(
             <h3 class="mb-0">PM Learning Tool.</h3>
             <p class="text-xs tracking-wide mt-1">A personal notebook for builders learning product management.</p>
           </div>
-          <div class="flex flex-wrap gap-4 justify-center">
+          <div class="flex flex-wrap gap-4 justify-center items-center">
             <div class="text-center">
               <span class="text-xs text-gray-500 dark:text-gray-400">Modules</span>
               <strong class="block text-lg tracking-tight">{modules.length}</strong>
@@ -82,9 +82,37 @@ const totalReading = lessons.reduce(
               <span class="text-xs text-gray-500 dark:text-gray-400">Drafts</span>
               <strong class="block text-lg tracking-tight">{draftedLessons}</strong>
             </div>
+            <div class="footer-reading-progress" data-global-reading-progress>
+              <div class="reading-progress-bar">
+                <div class="reading-progress-fill" data-global-reading-fill></div>
+              </div>
+              <span class="reading-text" data-global-reading-text>Reading: 0%</span>
+            </div>
           </div>
         </div>
       </footer>
     </div>
+
+    <script is:inline define:vars={{ totalReading }}>
+      function updateGlobalProgress() {
+        let checked = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith("pm-reading:") && localStorage.getItem(key) === "true") {
+            checked++;
+          }
+        }
+        const fill = document.querySelector("[data-global-reading-fill]");
+        const text = document.querySelector("[data-global-reading-text]");
+        if (fill && text) {
+          const pct = totalReading > 0 ? Math.round((checked / totalReading) * 100) : 0;
+          fill.style.width = `${pct}%`;
+          text.textContent = `Reading: ${pct}% (${checked}/${totalReading})`;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", updateGlobalProgress);
+      window.addEventListener("reading-progress-update", updateGlobalProgress);
+    </script>
   </body>
 </html>

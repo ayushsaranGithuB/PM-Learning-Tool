@@ -32,7 +32,7 @@ export type Lesson = {
   getHeadings: () => Promise<MarkdownHeading[]>;
 };
 
-const lessonModules = import.meta.glob(["../../content/**/*.md", "!../../content/**/*.flashcards.md"], { eager: true }) as Record<string, LessonModule>;
+const lessonModules = import.meta.glob(["../../content/**/*.md", "../../content/**/*.mdx", "!../../content/**/*.flashcards.md", "!../../content/**/*.flashcards.mdx"], { eager: true }) as Record<string, LessonModule>;
 
 export function getLessons(): Lesson[] {
   return Object.entries(lessonModules)
@@ -59,7 +59,7 @@ export function getLessons(): Lesson[] {
         id,
         data: fm,
         Content: lesson.Content,
-        rawContent: lesson.rawContent(),
+        rawContent: typeof lesson.rawContent === 'function' ? lesson.rawContent() : '',
         getHeadings: lesson.getHeadings
       };
     })

@@ -7,34 +7,107 @@ type Reading = {
 
 type Props = {
   items: Reading[];
+  lessonSlug: string;
 };
 
-const { items } = Astro.props;
+const { items, lessonSlug } = Astro.props;
 ---
 
 <section>
   <h2>Recommended Reading</h2>
   {
     items.length > 0 ? (
-      <ul class="checklist">
-        {items.map((item) => (
-          <li>
-            <a href={item.url} target="_blank" rel="noreferrer">
-              {item.title}
-            </a>
-            <span
-              class:list={[
-                "pill",
-                item.required ? "pill--solid" : "pill--muted",
-              ]}
-            >
-              {item.required ? "Required" : "Optional"}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <>
+        <div class="reading-progress" data-reading-progress>
+          <div class="reading-progress-bar">
+            <div class="reading-progress-fill" data-reading-progress-fill></div>
+          </div>
+          <span class="reading-progress-text" data-reading-progress-text>0 / 0 read</span>
+        </div>
+        <ul class="checklist">
+          {items.map((item) => {
+            const storageKey = `pm-reading:${lessonSlug}:${item.url}`;
+            return (
+              <li>
+                <label class="reading-checkbox" data-tooltip="Mark as read">
+                  <input
+                    type="checkbox"
+                    class="reading-checkbox-input"
+                    data-reading-checkbox
+                    data-key={storageKey}
+                    aria-label={`Mark "${item.title}" as read`}
+                  />
+                  <span class="reading-checkbox-indicator"></span>
+                </label>
+                <a href={item.url} target="_blank" rel="noreferrer">
+                  {item.title}
+                </a>
+                <span
+                  class:list={[
+                    "pill",
+                    item.required ? "pill--solid" : "pill--muted",
+                  ]}
+                >
+                  {item.required ? "Required" : "Optional"}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </>
     ) : (
       <p class="lesson-panel__empty">No external reading added yet.</p>
     )
   }
 </section>
+
+<script is:inline define:vars={{ lessonSlug }}>
+  const lessonKey = "pm-reading:" + lessonSlug;
+
+  function updateLessonProgress() {
+    const containers = document.querySelectorAll("[data-reading-progress]");
+    if (!containers.length) return;
+
+    const checkboxes = document.querySelectorAll("[data-reading-checkbox]");
+    const total = checkboxes.length;
+    const checked = Array.from(checkboxes).filter((cb) => cb.checked).length;
+    const pct = total > 0 ? (checked / total) * 100 : 0;
+
+    containers.forEach((container) => {
+      const fill = container.querySelector("[data-reading-progress-fill]");
+      const text = container.querySelector("[data-reading-progress-text]");
+      if (fill) fill.style.width = `${pct}%`;
+      if (text) text.textContent = `${checked} / ${total} read`;
+    });
+  }
+
+  function loadSavedState() {
+    const checkboxes = document.querySelectorAll("[data-reading-checkbox]");
+    checkboxes.forEach((cb) => {
+      const key = cb.getAttribute("data-key");
+      if (key && localStorage.getItem(key) === "true") {
+        cb.checked = true;
+      }
+    });
+    updateLessonProgress();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    loadSavedState();
+
+    document.querySelectorAll("[data-reading-checkbox]").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        const key = cb.getAttribute("data-key");
+        if (key) {
+          if (cb.checked) {
+            localStorage.setItem(key, "true");
+          } else {
+            localStorage.removeItem(key);
+          }
+        }
+        updateLessonProgress();
+        window.dispatchEvent(new CustomEvent("reading-progress-update"));
+      });
+    });
+  });
+</script>

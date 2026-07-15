@@ -58,15 +58,67 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
       </div>
     </header>
 
-    <div class="lesson-columns">
-      <div class="lesson-article prose">
-        <Content />
-        <ReadingList items={lesson.data.recommendedReading} />
-        <QuizModal cards={flashcards} title={lesson.data.title} />
-        <LessonPager previous={previous} next={next} />
-      </div>
+      <div class="lesson-columns">
+        <div class="lesson-article prose">
+          <Content />
+          <ReadingList items={lesson.data.recommendedReading} lessonSlug={lesson.data.slug} />
+          <QuizModal cards={flashcards} title={lesson.data.title} />
+          <LessonPager previous={previous} next={next} />
+        </div>
 
-      <div></div>
-    </div>
-  </article>
-</LessonLayout>
+        <div></div>
+      </div>
+    </article>
+  </LessonLayout>
+
+  <script is:inline define:vars={{ lessonSlug: lesson.data.slug }}>
+    function enhanceInlineLinks() {
+      const prose = document.querySelector(".lesson-article.prose");
+      if (!prose) return;
+
+      const links = prose.querySelectorAll("a[href^='http']");
+      links.forEach((link) => {
+        if (link.closest(".reading-link-wrapper") || link.closest(".checklist")) return;
+
+        const wrapper = document.createElement("span");
+        wrapper.className = "reading-link-wrapper";
+
+        const label = document.createElement("label");
+        label.className = "reading-checkbox";
+        label.setAttribute("data-tooltip", "Mark as read");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "reading-checkbox-input";
+        checkbox.setAttribute("data-reading-checkbox", "");
+        const key = `pm-reading:${lessonSlug}:${link.href}`;
+        checkbox.setAttribute("data-key", key);
+        checkbox.setAttribute("aria-label", `Mark "${link.textContent.trim()}" as read`);
+
+        if (localStorage.getItem(key) === "true") {
+          checkbox.checked = true;
+        }
+
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            localStorage.setItem(key, "true");
+          } else {
+            localStorage.removeItem(key);
+          }
+          window.dispatchEvent(new CustomEvent("reading-progress-update"));
+        });
+
+        const indicator = document.createElement("span");
+        indicator.className = "reading-checkbox-indicator";
+
+        label.appendChild(checkbox);
+        label.appendChild(indicator);
+        wrapper.appendChild(label);
+
+        link.parentNode.insertBefore(wrapper, link);
+        wrapper.appendChild(link);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", enhanceInlineLinks);
+  </script>

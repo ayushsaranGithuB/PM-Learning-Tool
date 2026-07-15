@@ -599,6 +599,166 @@ h2 {
   }
 }
 
+/* ===== Reading List Checkboxes ===== */
+
+.reading-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.reading-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.reading-checkbox-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  border: 2px solid var(--text-soft);
+  border-radius: 6px;
+  background: transparent;
+  transition: all 0.15s ease;
+  font-size: 0.85rem;
+  color: transparent;
+}
+
+.reading-checkbox-input:checked + .reading-checkbox-indicator {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.reading-checkbox-input:checked + .reading-checkbox-indicator::after {
+  content: "✓";
+  display: block;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--bg);
+}
+
+.reading-checkbox-input:focus-visible + .reading-checkbox-indicator {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Tooltip */
+.reading-checkbox[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  background: var(--heading);
+  color: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  line-height: 1.2;
+}
+
+.reading-checkbox[data-tooltip]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--heading);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Lesson-level reading progress bar */
+.reading-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.reading-progress-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.15);
+  overflow: hidden;
+}
+
+.reading-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.reading-progress-text {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* ===== Reading Link Wrapper (inline use) ===== */
+
+.reading-link-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  vertical-align: baseline;
+}
+
+.reading-link-wrapper .reading-checkbox {
+  flex-shrink: 0;
+}
+
+.reading-link-wrapper .reading-checkbox-indicator {
+  width: 1.15rem;
+  height: 1.15rem;
+  min-width: 1.15rem;
+  font-size: 0.7rem;
+}
+
+.reading-link-wrapper .reading-checkbox-input:checked + .reading-checkbox-indicator::after {
+  font-size: 0.7rem;
+}
+
+/* ===== Global Reading Progress Bar (footer) ===== */
+
+.footer-reading-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.footer-reading-progress .reading-progress-bar {
+  flex: 1;
+}
+
+.footer-reading-progress .reading-text {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
 @media (max-width: 640px) {
   .app-shell {
     padding: 0.75rem;
