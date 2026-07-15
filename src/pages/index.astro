@@ -1,67 +1,159 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getLessonUrl, getLessons } from "../lib/lessons";
-import { modules } from "../lib/modules";
-
-const lessons = getLessons();
-const modulesWithLessons = modules.map((module) => ({
-  ...module,
-  lessons: lessons
-    .filter((lesson) => lesson.data.module === module.id)
-    .sort((a, b) => a.data.order - b.data.order),
-}));
 ---
 
 <BaseLayout title="PM Learning Tool">
-  <section class="hero">
-    <p class="eyebrow">Notebook</p>
-    <h1 class="max-w-[70%] font-bold">Product management notes for builders.</h1>
-    <p class="hero__lede">
-      A quiet learning guide for engineers and designers moving toward stronger
-      product judgment.
-    </p>
-  </section>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose">
+    <h1>Why this notebook</h1>
 
-  <section class="content-section">
-    <div class="section-heading">
-      <h2>Learning Path</h2>
-      <p>Sequential when you want it, browseable when you do not.</p>
+    <p>
+      This notebook is a free, curated guide to learning Product Management from
+      some of the best articles, talks and resources available online.
+    </p>
+
+    <p>
+      It's designed for engineers, designers and curious builders who want to
+      understand how great products are created before investing thousands of
+      dollars in a formal course.
+    </p>
+    <p>
+      I compiled this study guide for myself. Maybe like me you're thinking of
+      taking one of the paid PM courses from Reforege or Product School, but
+      these courses cost a lot of money.
+    </p>
+    <p>
+      These paid courses are great and they present value beyond reading free
+      content online, they can help you get mentorship and guidance from
+      experienced PMs, and build a network of peers who can help you learn, grow
+      and land jobs in the future. But before you get into them maybe you want
+      to know if a Product role is actually something you might enjoy, before
+      committing serious money towards it.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-4">Also for non PMs</h2>
+
+    <p>
+      If you've worked in engineering or design you know the common frustrations
+      that go with that role. Sometimes it can feel like management and
+      stakeholders just don't "get it". Unreasonable scope, Unrealistic
+      timelines, Building features that don't work and designing products that
+      no one uses.
+    </p>
+
+    <blockquote>
+      <p>
+        If you want to influence product decisions, you first need to understand
+        how product decisions are made.
+      </p>
+    </blockquote>
+
+    <p>
+      Being able to understand the mentality and motivations of stakeholders can
+      help us better communicate with them on their terms and present our
+      objections and doubts in a way that registers with them and helps us feel
+      heard.
+    </p>
+
+    <p>
+      Being able to present your argument in product terms can help frame it in
+      a way that resonates with stakeholders and presents it in a way that feels
+      tactical and not personal.
+    </p>
+
+    <h2>Learning Objective</h2>
+
+    <blockquote>
+      <p>
+        Engineering and Design answer the "How?". Product Management answers the
+        "Why?".
+      </p>
+    </blockquote>
+
+    <p>
+      The goal of this notebook is to help shift your mindset from someone who
+      builds solutions to someone who investigates problems.
+    </p>
+
+    <p>
+      By the end of this module, you should understand what Product Managers do,
+      how they work with design and engineering, and why they are needed.
+    </p>
+
+    <p>
+      After understanding these concepts you should also be able to
+      differentiate high-performing product organizations from feature factories
+      and tailor your job search towards roles where your chances of making a
+      meaningful contribution are higher and hence more rewarding financially
+      and mentally.
+    </p>
+
+    <h2>How to use this guide</h2>
+
+    <p>
+      Lessons are presented in a linear format with recommended free reading
+      material top PM resources on the web followed by a summary of key
+      takeaways and a short quiz to test if you really understood the concepts
+      of the module.
+    </p>
+
+    <p>
+      The notebook starts with trying to explain the PM mindset and archetype
+      and then builds from there to take you through discovery, customer
+      research, prioritization, strategy, analytics and execution.
+    </p>
+
+    <h2>Credit where credit is due</h2>
+
+    <p>
+      All the material in this notebook is from freely accessible content on the
+      internet. I may have added some notes and summarized some items but there
+      are citations and direct links to all references used. This notebook
+      doesn't try to replace the original material. Instead, it organizes some
+      of the best freely available Product Management resources into a
+      structured learning path with notes, exercises and quizzes.
+    </p>
+
+    <p>
+      All the information was gained from free and so this guide is available
+      for free. It will never be paygated or monetized and I have no plans to
+      turn this into a product or service.
+    </p>
+
+    <p>
+      The original authors deserve the credit, so every lesson includes
+      citations and links back to the source material. <br />
+      All the resources and references used are mentioned alongside the content and
+      also available as a list on the /resources page
+    </p>
+
+    <p>
+      If you see something that needs fixing or know of a better resource to
+      share with others please open a github issue in this repo.
+    </p>
+
+    <h2>Get Started</h2>
+
+    <p>Start with the first lesson here:</p>
+
+    <div class="mt-4 pl-3">
+      <a
+        href="/foundations/module-1-what-product-managers-actually-do/"
+        class="pl-4 text-2xl font-bold no-underline"
+        >01 Foundations - What is product management ?</a
+      >
+      <p class="pl-0 !text-[1rem] !text-gray-400 !mt-1">
+        Product Management isn't about having all the answers. It's about
+        learning to ask better questions.
+      </p>
     </div>
 
-    <div class="grid gap-4 md:gap-8 mt-8 mb-8 md:grid-cols-1 lg:grid-cols-2">
-      {
-        modulesWithLessons.map((module, index) => {
-          const href = module.lessons[0]
-            ? getLessonUrl(module.lessons[0])
-            : `/${module.path}/`;
-
-          return (
-            <a class="module-card module-card--link" href={href}>
-              <div class="module-card__header">
-                <h3>
-                  {(index + 1).toLocaleString("en-US", {
-                    minimumIntegerDigits: 2,
-                    useGrouping: false,
-                  })}
-                  . {module.title}
-                </h3>
-              </div>
-              <p>{module.description}</p>
-              <div class="module-card__footer">
-                <span>
-                  {module.lessons.length} lesson
-                  {module.lessons.length === 1 ? "" : "s"}
-                </span>
-                <span
-                  class={`button ${module.lessons[0] ? "primary" : "disabled"}`}
-                >
-                  {module.lessons[0] ? "Start here →" : "Coming soon"}
-                </span>
-              </div>
-            </a>
-          );
-        })
-      }
+    <div class="mt-12">
+      <p>or go to the full catalog and pick a topic that interests you</p>
+      <a
+        href="/lessons"
+        class="inline-block text-accent button primary !text-xl !px-6 !py-3 rounded-lg hover:text-blue-800 ml-4"
+        >View All Lessons &rarr;
+      </a>
     </div>
   </section>
 </BaseLayout>
