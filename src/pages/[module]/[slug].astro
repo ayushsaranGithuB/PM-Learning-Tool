@@ -105,6 +105,10 @@ const flashcards = getFlashcardsForLesson(lesson.data.slug);
           } else {
             localStorage.removeItem(key);
           }
+          // Sync all checkboxes with the same key (inline + reading list duplicates)
+          document.querySelectorAll(`[data-key="${key}"]`).forEach((other) => {
+            other.checked = checkbox.checked;
+          });
           window.dispatchEvent(new CustomEvent("reading-progress-update"));
         });
 

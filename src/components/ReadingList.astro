@@ -77,9 +77,21 @@ const { items, lessonSlug } = Astro.props;
     const containers = document.querySelectorAll("[data-reading-progress]");
     if (!containers.length) return;
 
-    const checkboxes = document.querySelectorAll("[data-reading-checkbox]");
-    const total = checkboxes.length;
-    const checked = Array.from(checkboxes).filter((cb) => cb.checked).length;
+    // Deduplicate by data-key: the same link may appear both inline and in the reading list
+    const uniqueKeys = new Set();
+    const checkedKeys = new Set();
+    document.querySelectorAll("[data-reading-checkbox]").forEach((cb) => {
+      const key = cb.getAttribute("data-key");
+      if (key) {
+        uniqueKeys.add(key);
+        if (cb.checked) {
+          checkedKeys.add(key);
+        }
+      }
+    });
+
+    const total = uniqueKeys.size;
+    const checked = checkedKeys.size;
     const pct = total > 0 ? (checked / total) * 100 : 0;
 
     containers.forEach((container) => {
@@ -115,6 +127,10 @@ const { items, lessonSlug } = Astro.props;
           } else {
             localStorage.removeItem(key);
           }
+          // Sync all checkboxes with the same key (inline + reading list duplicates)
+          document.querySelectorAll(`[data-key="${key}"]`).forEach((other) => {
+            other.checked = cb.checked;
+          });
         }
         updateLessonProgress();
         window.dispatchEvent(new CustomEvent("reading-progress-update"));
