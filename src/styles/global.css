@@ -284,8 +284,7 @@ h2 {
 
 .module-card__footer,
 .lesson-card__meta,
-.lesson-meta,
-.topbar__actions {
+.lesson-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
@@ -681,10 +680,6 @@ body.mobile-nav-open {
   }
 
   .desktop-nav {
-    display: none;
-  }
-
-  .topbar__actions {
     display: none;
   }
 
