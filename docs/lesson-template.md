@@ -1,56 +1,65 @@
 ---
 title: Lesson Title
-slug: lesson-title
-module: 01-foundations
+slug: lesson-slug
+module: 04-discovery
 order: 1
 status: draft
-estimatedMinutes: 15
+estimatedMinutes: 20
 prerequisites: []
 recommendedReading:
   - title: Source Title
     url: https://example.com
     required: true
-flashcards:
-  - card-id-1
+flashcards: []
 ---
 
-# Lesson Title
+import ReadingLink from "../../src/components/ReadingLink.astro";
 
-## Learning Objectives
+## Learning Goal
 
-- Objective one
-- Objective two
+A single sentence describing what the reader should understand after completing this lesson.
 
-## Why This Matters
+---
 
-Start with a practical story or tension.
+## Read This
 
-## Core Idea
+<ReadingLink
+  href="https://example.com/the-article-url"
+  lessonSlug="lesson-slug"
+  title="The Article Title"
+/>
 
-Explain the concept in plain language.
+A paragraph or two of context explaining why this reading was chosen and what the reader should look for while reading it. Frame the reading so the learner knows what to pay attention to.
 
-## Mental Model
+---
 
-Introduce one memorable way to think about the concept.
+## Key Takeaways
 
-## Example
+### Point One
 
-Use a realistic company, product, or scenario.
+A few sentences explaining the first major concept from the reading. This is where you synthesise the article into your own words so the reader doesn't have to re-read the whole thing later.
 
-## Builder Notes
+### Point Two
 
-Connect the lesson back to engineering or design trade-offs.
+Continue with the next important concept. Use subheadings, blockquotes, and lists as needed.
 
-## Common Mistakes
+---
 
-- Mistake one
-- Mistake two
+## Practical Framework
 
-## Reflection
+- Step one
+- Step two
+- Step three
 
-- Question one
-- Question two
+---
 
-## Further Reading
+## PM Takeaway
 
-- Source one
+One strong closing thought that connects the reading back to the reader's daily work as a product manager.
+
+---
+
+## Reference
+
+- Title of the article, with a link
+- Any related sources

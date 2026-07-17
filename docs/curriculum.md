@@ -6,7 +6,7 @@ This curriculum is meant to grow gradually. A module can exist before all of its
 
 - [x] What Is Product Management?
 - [ ] The Product Triad
-- [ ] Prioritization
+- [ ] Prioritization (content exists, needs flashcards and recommended reading)
 - [ ] Product Strategy
 
 ## 02 Product Thinking
@@ -14,6 +14,8 @@ This curriculum is meant to grow gradually. A module can exist before all of its
 - [ ] Outcomes vs Outputs
 - [ ] User Problems and Jobs To Be Done
 - [ ] Product Sense
+
+**Supplementary reading:** A Day in the Life of a Great PM, Building Product Organizations, Building Your Own Career, Growth Isn't Marketing, How Senior PMs Think Differently, Lessons from Chefs Soldiers Founders and Startup CEOs, Making Decisions Under Uncertainty, Prioritization Without a Roadmap Fetish, The Real Job of a PM, Thinking Like a Systems Designer, Understanding Users Better, Why Product Management Exists, Working with Designers and Engineers
 
 ## 03 Strategy
 
@@ -27,6 +29,8 @@ This curriculum is meant to grow gradually. A module can exist before all of its
 - [ ] Continuous Discovery
 - [ ] Opportunity Framing
 
+**Supplementary reading:** The Mom Test, What to Build
+
 ## 05 Execution
 
 - [ ] Working With Engineering
@@ -35,9 +39,11 @@ This curriculum is meant to grow gradually. A module can exist before all of its
 
 ## 06 Analytics
 
-- [ ] North Star Metrics
+- [ ] North Star Metrics (content exists, needs flashcards)
 - [ ] Funnels and Retention
 - [ ] Experimentation
+
+**Supplementary reading:** Metrics and Growth, Input vs. Output Metrics, Pirate Metrics (AARRR), DAU / WAU / MAU and Stickiness, OKRs and KPI Cascades
 
 ## 07 Growth
 
@@ -61,3 +67,4 @@ This curriculum is meant to grow gradually. A module can exist before all of its
 
 - A lesson should be marked complete here only after the content, recommended reading, and flashcards are in place.
 - New modules can be added as the curriculum evolves.
+- Supplementary reading items exist in the content directory but are not yet integrated as formal lessons.
