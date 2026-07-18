@@ -3,9 +3,10 @@ type Props = {
   href: string;
   lessonSlug: string;
   title?: string;
+  tags?: string[];
 };
 
-const { href, lessonSlug, title } = Astro.props;
+const { href, lessonSlug, title, tags } = Astro.props;
 const storageKey = `pm-reading:${lessonSlug}:${href}`;
 ---
 
@@ -29,8 +30,19 @@ const storageKey = `pm-reading:${lessonSlug}:${href}`;
     <span class="text-lg font-semibold !no-underline">
       {title ?? title}
     </span>
-    <span class="underline">
+    <span class="underline text-accent font-normal">
       {href.length > 150 ? href.slice(0, 150) + "..." : href}
     </span>
+    {
+      tags && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-2 opacity-70">
+          {tags.map((tag) => (
+            <span class="text-xs text-muted font-normal tracking-wider">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
   </a>
 </span>

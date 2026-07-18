@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ReadingLink from "../components/ReadingLink.astro";
 
 interface Link {
   title: string;
@@ -19,8 +20,12 @@ interface Course {
 
 const courses: Course[] = [
   {
-    title: "Product Management Specialization - Coursera",
-    url: "https://www.coursera.org/specializations/product-management",
+    title: "Reforge",
+    url: "https://www.reforge.com/",
+  },
+  {
+    title: "Maven - Product Management Courses",
+    url: "https://maven.com/courses/product",
   },
   {
     title: "Product Management Foundations - LinkedIn Learning",
@@ -29,14 +34,6 @@ const courses: Course[] = [
   {
     title: "Product School Courses",
     url: "https://www.productschool.com/",
-  },
-  {
-    title: "Reforge",
-    url: "https://www.reforge.com/",
-  },
-  {
-    title: "Maven - Product Management Courses",
-    url: "https://maven.com/courses/product",
   },
   {
     title: "NextLeap - Product Management Course",
@@ -369,25 +366,24 @@ const books: Course[] = [
       </p>
     </div>
 
-    <div class="mb-12">
-      <h2 class="text-2xl font-bold mb-6">Recommended PM Courses</h2>
-      <ul class="space-y-2 pl-2">
+    <div class="mb-24">
+      <h2 class="text-2xl font-bold mb-6">PM Courses</h2>
+      <ul class="space-y-4 pl-2">
         {
           courses.map((course) => (
             <li>
-              <a
+              <ReadingLink
                 href={course.url}
-                class="text-accent hover:underline font-normal"
-              >
-                {course.title}
-              </a>
+                lessonSlug="resources"
+                title={course.title}
+              />
             </li>
           ))
         }
       </ul>
     </div>
 
-    <div class="mb-12">
+    <div class="mb-24">
       <h2 class="text-2xl font-bold mb-6">Suggested Blogs and Reading</h2>
 
       {
@@ -396,21 +392,15 @@ const books: Course[] = [
             <h3 class="text-3xl font-semibold mb-4 mt-14 text-gray-800 pb-2">
               {category.name}
             </h3>
-            <ul class="space-y-2 pl-4 mb-10">
+            <ul class="space-y-4 pl-4 mb-10">
               {category.links.map((link) => (
-                <li class="mb-4 font-semibold">
-                  {link.title}
-                  <br />
-                  <a
+                <li>
+                  <ReadingLink
                     href={link.url}
-                    class="text-accent hover:underline font-normal"
-                  >
-                    {link.url}
-                  </a>
-                  <br />
-                  <span class="text-xs text-gray-500 font-normal">
-                    {link.tags.join(" ")}
-                  </span>
+                    lessonSlug="resources"
+                    title={link.title}
+                    tags={link.tags}
+                  />
                 </li>
               ))}
             </ul>
@@ -421,16 +411,15 @@ const books: Course[] = [
 
     <div>
       <h2 class="text-2xl font-bold mb-6">Books</h2>
-      <ul class="space-y-2 pl-2">
+      <ul class="space-y-4 pl-2">
         {
           books.map((book) => (
             <li>
-              <a
+              <ReadingLink
                 href={book.url}
-                class="text-accent hover:underline font-normal"
-              >
-                {book.title}
-              </a>
+                lessonSlug="resources"
+                title={book.title}
+              />
             </li>
           ))
         }
