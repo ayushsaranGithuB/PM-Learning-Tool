@@ -1,5 +1,360 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Link {
+  title: string;
+  url: string;
+  tags: string[];
+}
+
+interface Category {
+  name: string;
+  links: Link[];
+}
+
+interface Course {
+  title: string;
+  url: string;
+}
+
+const courses: Course[] = [
+  {
+    title: "Product Management Specialization - Coursera",
+    url: "https://www.coursera.org/specializations/product-management",
+  },
+  {
+    title: "Product Management Foundations - LinkedIn Learning",
+    url: "https://www.linkedin.com/learning/product-management-foundations",
+  },
+  {
+    title: "Product School Courses",
+    url: "https://www.productschool.com/",
+  },
+  {
+    title: "Reforge",
+    url: "https://www.reforge.com/",
+  },
+  {
+    title: "Maven - Product Management Courses",
+    url: "https://maven.com/courses/product",
+  },
+  {
+    title: "NextLeap - Product Management Course",
+    url: "https://nextleap.app/course/product-management-course",
+  },
+];
+
+const blogCategories: Category[] = [
+  {
+    name: "General / PM Fundamentals",
+
+    links: [
+      {
+        title: "What Does a Product Manager Do? - Product School",
+        url: "https://productschool.com/blog/career-development/what-does-product-manager-do",
+        tags: ["#pm-basics", "#product-management", "#career-intro"],
+      },
+      {
+        title: "SVPG - Silicon Valley Product Group",
+        url: "https://www.svpg.com/articles",
+        tags: ["#pm-basics", "#product-strategy", "#marty-cagan"],
+      },
+      {
+        title: "Mind the Product",
+        url: "https://www.mindtheproduct.com/",
+        tags: ["#pm-community", "#product-management", "#blog"],
+      },
+      {
+        title: "ProductPlan Blog",
+        url: "https://www.productplan.com/blog/",
+        tags: ["#roadmap", "#product-management", "#blog"],
+      },
+      {
+        title: "Roman Pichler's Product Management Blog",
+        url: "https://www.romanpichler.com/blog/",
+        tags: ["#product-management", "#agile", "#scrum"],
+      },
+      {
+        title: "The Black Box of Product Management",
+        url: "https://blackboxofpm.com/",
+        tags: ["#pm-insights", "#product-management", "#blog"],
+      },
+      {
+        title: "Product Manager Archetype - NN/G",
+        url: "https://www.nngroup.com/articles/product-manager-archetype/",
+        tags: ["#pm-roles", "#ux", "#product-management"],
+      },
+      {
+        title: "3 Types of Roadmaps in UX and Product Design (NN/g)",
+        url: "https://www.nngroup.com/articles/roadmap-types/",
+        tags: ["#roadmap", "#ux", "#product-design"],
+      },
+      {
+        title: "Product Management Casebook 2023-2024",
+        url: "https://www.scribd.com/document/828974305/Product-Management-Basic-Guide-IIMV-1724162695",
+        tags: ["#pm-fundamentals", "#guide", "#casebook"],
+      },
+      {
+        title: "PRODUCT MANAGEMENT 101 PLAYBOOK (Nasscom)",
+        url: "https://nasscom.in/deeptech/skills/img/PM101.pdf",
+        tags: ["#pm-101", "#playbook", "#beginners"],
+      },
+      {
+        title: "Product Manager vs. Product Marketing Manager Explained",
+        url: "https://productschool.com/blog/career-development/product-manager-vs-product-marketing",
+        tags: ["#pm-vs-pmm", "#roles", "#career"],
+      },
+      {
+        title: "Roles Explained: Program Managers vs Product Managers",
+        url: "https://productschool.com/blog/career-development/program-managers-vs-product-managers",
+        tags: ["#pm-vs-pgm", "#roles", "#career"],
+      },
+      {
+        title: "Marty Cagan - Tim Woods (Category)",
+        url: "https://timwoods.io/category/marty-cagan/",
+        tags: ["#marty-cagan", "#product-philosophy", "#leadership"],
+      },
+      {
+        title: 'On "Product Teams" and "Feature Teams" (LeSS)',
+        url: "https://less.works/blog/2019/09/05/on-product-team-and-feature-team",
+        tags: ["#product-teams", "#feature-teams", "#agile", "#less"],
+      },
+      {
+        title: "Product vision and strategy – Marty Cagan (Mind the Product)",
+        url: "https://www.mindtheproduct.com/product-vision-and-strategy-marty-cagan-on-the-product-experience-part-1-of-2/",
+        tags: ["#product-vision", "#strategy", "#marty-cagan"],
+      },
+      {
+        title: "Product404 – Marty Cagan (Teams, OKRs, and more)",
+        url: "https://timwoods.io/2020/09/06/product404-marty-cagan-product-leadership-teams-product-vs-feature-teams-okrs-and-more/",
+        tags: ["#okrs", "#product-teams", "#marty-cagan", "#leadership"],
+      },
+      {
+        title: "Product Teams vs Feature Teams in an AI world",
+        url: "https://www.elliotcsmith.com/product-teams-vs-feature-teams-in-an-ai-world/",
+        tags: ["#product-teams", "#feature-teams", "#ai"],
+      },
+      {
+        title: "Product Marketing for 2026 PLG: How to Get AI-Fluent",
+        url: "https://userpilot.com/blog/product-marketing/",
+        tags: ["#product-marketing", "#plg", "#ai"],
+      },
+      {
+        title:
+          "How to Validate Product Ideas and Decisions by Google Product Manager",
+        url: "https://productschool.com/blog/product-fundamentals/how-to-validate-product-ideas-and-decisions-by-google-product-manager",
+        tags: ["#validation", "#product-discovery", "#google"],
+      },
+      {
+        title: "FAQs - Product Institute",
+        url: "https://productinstitute.com/p/faqs",
+        tags: ["#pm-basics", "#faq", "#career-intro"],
+      },
+      {
+        title:
+          '"Sweat the Details" and Other Commandments for Mapping Out a Career in Product',
+        url: "https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/",
+        tags: ["#pm-thinking", "#fundamentals", "#growth"],
+      },
+      {
+        title:
+          "Why Chefs and Soldiers Make the Best Product Managers - First Round Review",
+        url: "https://review.firstround.com/why-soldiers-and-chefs-make-the-best-product-managers/",
+        tags: ["#pm-skills", "#leadership", "#thinking"],
+      },
+      {
+        title:
+          "20 Product: Lenny Rachitsky on The 3 Key Roles of the Product Manager",
+        url: "https://www.deciphr.ai/podcast/20-product-lenny-rachitsky-on-the-3-key-roles-of-the-product-manager-5-skills-all-the-best-pms-have-when-to-hire-your-first-pm-how-to-structure-the-hiring-process-for-pms--what-leaders-can-do-to-make-their-pms-successful",
+        tags: ["#lenny-rachitsky", "#pm-roles", "#fundamentals", "#podcast"],
+      },
+      {
+        title: "Ask HN: Product Managers, how did you get there? (Hacker News)",
+        url: "https://news.ycombinator.com/item?id=13470985",
+        tags: ["#pm-paths", "#hn-discussion", "#learning"],
+      },
+      {
+        title: "Best 15 SaaS Product Management Courses in the USA (2026)",
+        url: "https://fueler.io/blog/best-saas-product-management-courses-in-the-usa",
+        tags: ["#courses", "#saas", "#learning"],
+      },
+      {
+        title: "What Makes a Great Product Manager (Hacker News)",
+        url: "https://news.ycombinator.com/item?id=25179296",
+        tags: ["#pm-skills", "#hn-discussion", "#fundamentals"],
+      },
+      {
+        title: "High-Quality and Fast—Why We Refuse to Choose",
+        url: "https://creatingvalue.substack.com/p/high-quality-and-fast",
+        tags: ["#pm-philosophy", "#tradeoffs", "#fundamentals"],
+      },
+    ],
+  },
+  {
+    name: "Product Management for Designers and Engineers",
+
+    links: [
+      {
+        title: "IC? Manager? Technical Founder? — Stripe & Cocoon's Amber Feng",
+        url: "https://review.firstround.com/podcast/ic-manager-technical-founder-how-to-chart-your-engineering-career-path-stripe-cocoons-amber-feng/",
+        tags: ["#technical-pm", "#engineering", "#career", "#podcast"],
+      },
+      {
+        title: 'The Paradox of Being a "Technical" Product Manager',
+        url: "https://medium.com/@akkineni.saibhavana/product-notes-by-sai-the-paradox-of-being-a-technical-product-manager-ebcf9e29be54",
+        tags: ["#technical-pm", "#engineering", "#skills"],
+      },
+      {
+        title: "The Product Triad: Design's Role - NN/G",
+        url: "https://www.nngroup.com/articles/the-product-triad-designs-role/",
+        tags: ["#product-triad", "#design", "#ux", "#cross-functional"],
+      },
+      {
+        title: "Product and UX: Study Guide (NN/g)",
+        url: "https://www.nngroup.com/articles/product-and-ux-study-guide/",
+        tags: ["#ux", "#product-design", "#study-guide"],
+      },
+      {
+        title: "Managed-UX Integration (NN/g)",
+        url: "https://www.nngroup.com/articles/managed-ux/",
+        tags: ["#ux-management", "#design-ops", "#team-structure"],
+      },
+    ],
+  },
+  {
+    name: "Hiring PMs",
+
+    links: [
+      {
+        title:
+          "Find, Vet and Close the Best Product Managers - First Round Review",
+        url: "https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/",
+        tags: ["#hiring", "#recruiting", "#pm-interviews"],
+      },
+      {
+        title: "Hire the Best Product Managers (Upwork)",
+        url: "https://www.upwork.com/hire/product-managers/",
+        tags: ["#hiring", "#freelance", "#upwork"],
+      },
+      {
+        title: "How to hire a product manager (Hacker News)",
+        url: "https://news.ycombinator.com/item?id=5275197",
+        tags: ["#hiring", "#hn-discussion", "#recruiting"],
+      },
+      {
+        title: "How We Recruit for Product",
+        url: "https://creatingvalue.substack.com/p/product-team-recruiting",
+        tags: ["#recruiting", "#hiring", "#product-team"],
+      },
+    ],
+  },
+  {
+    name: "Strategy, Vision & Product-Market Fit",
+
+    links: [
+      {
+        title:
+          "To Build Great Products, Build This Strong, Scalable System First - First Round Review",
+        url: "https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/",
+        tags: ["#product-systems", "#scalability", "#process"],
+      },
+      {
+        title:
+          "How to Start a Startup: Finding Product-Market Fit (YC Startup Library)",
+        url: "https://www.ycombinator.com/library/86-how-to-start-a-startup-finding-product-market-fit",
+        tags: ["#product-market-fit", "#startup", "#pmf", "#yc"],
+      },
+      {
+        title:
+          "Product Leadership Rules to Live By From My Experience at Pandora",
+        url: "https://review.firstround.com/product-leadership-rules-to-live-by-from-my-experience-at-pandora/",
+        tags: ["#product-leadership", "#leadership", "#pandora"],
+      },
+      {
+        title:
+          "17 Product Managers Who Will Own the Future of NYC Tech — and the 9 Frameworks They'll Use to Do It",
+        url: "https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/",
+        tags: ["#pm-frameworks", "#strategy", "#nyc-tech"],
+      },
+      {
+        title: "The Product Team: Vision & Mandate",
+        url: "https://creatingvalue.substack.com/p/the-product-team",
+        tags: ["#product-vision", "#team-structure", "#strategy"],
+      },
+    ],
+  },
+  {
+    name: "Teams, Leadership & Culture",
+
+    links: [
+      {
+        title:
+          "How to Craft Your Product Team at Every Stage - First Round Review",
+        url: "https://review.firstround.com/how-to-craft-your-product-team-at-every-stage-from-pre-product-market-fit-to-hypergrowth/",
+        tags: ["#team-building", "#hiring", "#startup-stages"],
+      },
+    ],
+  },
+  {
+    name: "Startups & Growth",
+
+    links: [
+      {
+        title: "How to set up, hire, and scale a growth strategy and team",
+        url: "https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team",
+        tags: ["#growth", "#hiring", "#startup", "#yc"],
+      },
+      {
+        title: "Analytics for startups : YC Startup Library | Y Combinator",
+        url: "https://www.ycombinator.com/library/8H-analytics-for-startups",
+        tags: ["#analytics", "#startup", "#metrics", "#data"],
+      },
+      {
+        title:
+          "$40B in Startup Value (Initialized Capital) | Garry Tan Podcast Notes",
+        url: "https://podcastnotes.org/that-creative-life/40b-in-startup-value-initialized-capital-garry-tan-on-that-creative-life-with-sara-dietschy/",
+        tags: ["#startup", "#venture-capital", "#garry-tan", "#podcast"],
+      },
+      {
+        title:
+          "The Playbook For Building An AI Native Company (YC Startup Library)",
+        url: "https://www.ycombinator.com/library/OX-the-playbook-for-building-an-ai-native-company",
+        tags: ["#ai", "#startup", "#playbook", "#yc"],
+      },
+      {
+        title:
+          "What It Takes to Grow Your Startup 500% in Months - First Round Review",
+        url: "https://review.firstround.com/what-it-takes-to-grow-your-startup-500-in-less-than-a-year/",
+        tags: ["#growth", "#startup", "#scale", "#first-round"],
+      },
+      {
+        title: "Mahesh Yadav Podcast Transcript: AI Agent PM Roadmap",
+        url: "https://www.aakashg.com/mahesh-yadav-podcast-transcript/",
+        tags: ["#ai", "#pm-roadmap", "#startup", "#podcast"],
+      },
+    ],
+  },
+];
+
+const books: Course[] = [
+  {
+    title: "Inspired: How to Create Tech Products Customers Love - Marty Cagan",
+    url: "https://www.amazon.com/Inspired-Product-Management-Second/dp/1119387507",
+  },
+  {
+    title:
+      "Decode and Conquer: Answers to Product Management Interviews - Lewis Lin",
+    url: "https://www.amazon.com/Decode-Agile-Management-Engineers-Leading/dp/1732265186",
+  },
+  {
+    title: "The Practical Product Manager - Robert Siegel",
+    url: "https://www.amazon.com/Practical-Product-Management-Transform-Productivity/dp/1491927336",
+  },
+  {
+    title: "The Design of Everyday Things - Don Norman",
+    url: "https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452637404",
+  },
+];
 ---
 
 <BaseLayout
@@ -17,456 +372,68 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="mb-12">
       <h2 class="text-2xl font-bold mb-6">Recommended PM Courses</h2>
       <ul class="space-y-2 pl-2">
-        <li>
-          <a
-            href="https://www.coursera.org/specializations/product-management"
-            class="text-accent hover:underline font-normal"
-            >Product Management Specialization - Coursera</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.udemy.com/course/productmanagement/"
-            class="text-accent hover:underline font-normal"
-            >Product Management Fundamentals - Udemy</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/learning/product-management-foundations"
-            class="text-accent hover:underline font-normal"
-            >Product Management Foundations - LinkedIn Learning</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.productschool.com/"
-            class="text-accent hover:underline font-normal"
-            >Product School Courses</a
-          >
-        </li>
+        {
+          courses.map((course) => (
+            <li>
+              <a
+                href={course.url}
+                class="text-accent hover:underline font-normal"
+              >
+                {course.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <div class="mb-12">
       <h2 class="text-2xl font-bold mb-6">Suggested Blogs and Reading</h2>
-      <ul class="space-y-2 pl-2">
-        <li>
-          <a
-            href="https://productschool.com/blog/career-development/what-does-product-manager-do"
-            class="text-accent hover:underline font-normal"
-            >What Does a Product Manager Do? - Product School</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.svpg.com/articles"
-            class="text-accent hover:underline font-normal"
-            >SVPG - Silicon Valley Product Group</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.mindtheproduct.com/"
-            class="text-accent hover:underline font-normal">Mind the Product</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.productplan.com/blog/"
-            class="text-accent hover:underline font-normal">ProductPlan Blog</a
-          >
-        </li>
-         <li>
-           <a
-             href="https://www.romanpichler.com/blog/"
-             class="text-accent hover:underline font-normal"
-             >Roman Pichler's Product Management Blog</a
-           >
-         </li>
-         <li>
-           <a
-             href="https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team"
-             class="text-accent hover:underline font-normal"
-             >How to set up, hire, and scale a growth strategy and team</a
-           >
-          </li>
-          <li>
-            <a
-            href="https://blackboxofpm.com/"
-            class="text-accent hover:underline font-normal"
-            >The Black Box of Product Management</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Find, Vet and Close the Best Product Managers - First Round Review<br
-          />
-          <a
-            href="https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/find-vet-and-close-the-best-product-managers-heres-how/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Manager Archetype - NN/G<br />
-          <a
-            href="https://www.nngroup.com/articles/product-manager-archetype/"
-            class="text-accent hover:underline font-normal"
-            >https://www.nngroup.com/articles/product-manager-archetype/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          The Product Triad: Design's Role - NN/G<br />
-          <a
-            href="https://www.nngroup.com/articles/the-product-triad-designs-role/"
-            class="text-accent hover:underline font-normal"
-            >https://www.nngroup.com/articles/the-product-triad-designs-role/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          “Sweat the Details” and Other Commandments for Mapping Out a Career in
-          Product<br />
-          <a
-            href="https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/sweat-the-details-and-other-commandments-for-mapping-out-a-career-in-product/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          17 Product Managers Who Will Own the Future of NYC Tech — and the 9
-          Frameworks They'll Use to Do It<br />
-          <a
-            href="https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/17-product-managers-who-will-own-the-future-of-nyc-tech-and-the-9-frameworks-theyll-use-to-do-it/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          To Build Great Products, Build This Strong, Scalable System First -
-          First Round Review<br />
-          <a
-            href="https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/to-build-great-products-build-this-strong-scalable-system-first/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Why Chefs and Soldiers Make the Best Product Managers - First Round
-          Review<br />
-          <a
-            href="https://review.firstround.com/why-soldiers-and-chefs-make-the-best-product-managers/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/why-soldiers-and-chefs-make-the-best-product-managers/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Analytics for startups : YC Startup Library | Y Combinator<br />
-          <a
-            href="https://www.ycombinator.com/library/8H-analytics-for-startups"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/library/8H-analytics-for-startups</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          How to set up, hire, and scale a growth strategy and team : YC Startup
-          Library<br />
-          <a
-            href="https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/library/59-how-to-set-up-hire-and-scale-a-growth-strategy-and-team</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          $40B in Startup Value (Initialized Capital) | Garry Tan Podcast Notes<br />
-          <a
-            href="https://podcastnotes.org/that-creative-life/40b-in-startup-value-initialized-capital-garry-tan-on-that-creative-life-with-sara-dietschy/"
-            class="text-accent hover:underline font-normal"
-            >https://podcastnotes.org/that-creative-life/40b-in-startup-value-initialized-capital-garry-tan-on-that-creative-life-with-sara-dietschy/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          20 Product: Lenny Rachitsky on The 3 Key Roles of the Product Manager<br />
-          <a
-            href="https://www.deciphr.ai/podcast/20-product-lenny-rachitsky-on-the-3-key-roles-of-the-product-manager-5-skills-all-the-best-pms-have-when-to-hire-your-first-pm-how-to-structure-the-hiring-process-for-pms--what-leaders-can-do-to-make-their-pms-successful"
-            class="text-accent hover:underline font-normal"
-            >https://www.deciphr.ai/podcast/20-product-lenny-rachitsky-on-the-3-key-roles-of-the-product-manager-5-skills-all-the-best-pms-have-when-to-hire-your-first-pm-how-to-structure-the-hiring-process-for-pms--what-leaders-can-do-to-make-their-pms-successful</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          3 Types of Roadmaps in UX and Product Design (NN/g)<br />
-          <a
-            href="https://www.nngroup.com/articles/roadmap-types/"
-            class="text-accent hover:underline font-normal"
-            >https://www.nngroup.com/articles/roadmap-types/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Ask HN: Product Managers, how did you get there? (Hacker News)<br />
-          <a
-            href="https://news.ycombinator.com/item?id=13470985"
-            class="text-accent hover:underline font-normal"
-            >https://news.ycombinator.com/item?id=13470985</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Best 15 SaaS Product Management Courses in the USA (2026)<br />
-          <a
-            href="https://fueler.io/blog/best-saas-product-management-courses-in-the-usa"
-            class="text-accent hover:underline font-normal"
-            >https://fueler.io/blog/best-saas-product-management-courses-in-the-usa</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          FAQs - Product Institute<br />
-          <a
-            href="https://productinstitute.com/p/faqs"
-            class="text-accent hover:underline font-normal"
-            >https://productinstitute.com/p/faqs</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Hire the Best Product Managers (Upwork)<br />
-          <a
-            href="https://www.upwork.com/hire/product-managers/"
-            class="text-accent hover:underline font-normal"
-            >https://www.upwork.com/hire/product-managers/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          How to Craft Your Product Team at Every Stage - First Round Review<br />
-          <a
-            href="https://review.firstround.com/how-to-craft-your-product-team-at-every-stage-from-pre-product-market-fit-to-hypergrowth/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/how-to-craft-your-product-team-at-every-stage-from-pre-product-market-fit-to-hypergrowth/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          How to hire a product manager (Hacker News)<br />
-          <a
-            href="https://news.ycombinator.com/item?id=5275197"
-            class="text-accent hover:underline font-normal"
-            >https://news.ycombinator.com/item?id=5275197</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          How to Start a Startup: Finding Product-Market Fit (YC Startup Library)<br />
-          <a
-            href="https://www.ycombinator.com/library/86-how-to-start-a-startup-finding-product-market-fit"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/library/86-how-to-start-a-startup-finding-product-market-fit</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          How to Validate Product Ideas and Decisions by Google Product Manager<br />
-          <a
-            href="https://productschool.com/blog/product-fundamentals/how-to-validate-product-ideas-and-decisions-by-google-product-manager"
-            class="text-accent hover:underline font-normal"
-            >https://productschool.com/blog/product-fundamentals/how-to-validate-product-ideas-and-decisions-by-google-product-manager</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          IC? Manager? Technical Founder? — Stripe & Cocoon's Amber Feng<br />
-          <a
-            href="https://review.firstround.com/podcast/ic-manager-technical-founder-how-to-chart-your-engineering-career-path-stripe-cocoons-amber-feng/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/podcast/ic-manager-technical-founder-how-to-chart-your-engineering-career-path-stripe-cocoons-amber-feng/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Mahesh Yadav Podcast Transcript: AI Agent PM Roadmap<br />
-          <a
-            href="https://www.aakashg.com/mahesh-yadav-podcast-transcript/"
-            class="text-accent hover:underline font-normal"
-            >https://www.aakashg.com/mahesh-yadav-podcast-transcript/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Managed-UX Integration (NN/g)<br />
-          <a
-            href="https://www.nngroup.com/articles/managed-ux/"
-            class="text-accent hover:underline font-normal"
-            >https://www.nngroup.com/articles/managed-ux/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Marty Cagan - Tim Woods (Category)<br />
-          <a
-            href="https://timwoods.io/category/marty-cagan/"
-            class="text-accent hover:underline font-normal"
-            >https://timwoods.io/category/marty-cagan/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          On "Product Teams" and "Feature Teams" (LeSS)<br />
-          <a
-            href="https://less.works/blog/2019/09/05/on-product-team-and-feature-team"
-            class="text-accent hover:underline font-normal"
-            >https://less.works/blog/2019/09/05/on-product-team-and-feature-team</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          The Paradox of Being a "Technical" Product Manager<br />
-          <a
-            href="https://medium.com/@akkineni.saibhavana/product-notes-by-sai-the-paradox-of-being-a-technical-product-manager-ebcf9e29be54"
-            class="text-accent hover:underline font-normal"
-            >https://medium.com/@akkineni.saibhavana/product-notes-by-sai-the-paradox-of-being-a-technical-product-manager-ebcf9e29be54</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          The Playbook For Building An AI Native Company (YC Startup Library)<br />
-          <a
-            href="https://www.ycombinator.com/library/OX-the-playbook-for-building-an-ai-native-company"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/library/OX-the-playbook-for-building-an-ai-native-company</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product and UX: Study Guide (NN/g)<br />
-          <a
-            href="https://www.nngroup.com/articles/product-and-ux-study-guide/"
-            class="text-accent hover:underline font-normal"
-            >https://www.nngroup.com/articles/product-and-ux-study-guide/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Leadership Rules to Live By From My Experience at Pandora<br />
-          <a
-            href="https://review.firstround.com/product-leadership-rules-to-live-by-from-my-experience-at-pandora/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/product-leadership-rules-to-live-by-from-my-experience-at-pandora/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Management Casebook 2023-2024<br />
-          <a
-            href="https://www.scribd.com/document/828974305/Product-Management-Basic-Guide-IIMV-1724162695"
-            class="text-accent hover:underline font-normal"
-            >https://www.scribd.com/document/828974305/Product-Management-Basic-Guide-IIMV-1724162695</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          PRODUCT MANAGEMENT 101 PLAYBOOK (Nasscom)<br />
-          <a
-            href="https://nasscom.in/deeptech/skills/img/PM101.pdf"
-            class="text-accent hover:underline font-normal"
-            >https://nasscom.in/deeptech/skills/img/PM101.pdf</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Manager at Clipboard (Y Combinator Job)<br />
-          <a
-            href="https://www.ycombinator.com/companies/clipboard/jobs/I5CFhDR-product-manager"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/companies/clipboard/jobs/I5CFhDR-product-manager</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Manager vs. Product Marketing Manager Explained<br />
-          <a
-            href="https://productschool.com/blog/career-development/product-manager-vs-product-marketing"
-            class="text-accent hover:underline font-normal"
-            >https://productschool.com/blog/career-development/product-manager-vs-product-marketing</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Marketing for 2026 PLG: How to Get AI-Fluent<br />
-          <a
-            href="https://userpilot.com/blog/product-marketing/"
-            class="text-accent hover:underline font-normal"
-            >https://userpilot.com/blog/product-marketing/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product Teams vs Feature Teams in an AI world<br />
-          <a
-            href="https://www.elliotcsmith.com/product-teams-vs-feature-teams-in-an-ai-world/"
-            class="text-accent hover:underline font-normal"
-            >https://www.elliotcsmith.com/product-teams-vs-feature-teams-in-an-ai-world/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product vision and strategy – Marty Cagan (Mind the Product)<br />
-          <a
-            href="https://www.mindtheproduct.com/product-vision-and-strategy-marty-cagan-on-the-product-experience-part-1-of-2/"
-            class="text-accent hover:underline font-normal"
-            >https://www.mindtheproduct.com/product-vision-and-strategy-marty-cagan-on-the-product-experience-part-1-of-2/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Product404 – Marty Cagan (Teams, OKRs, and more)<br />
-          <a
-            href="https://timwoods.io/2020/09/06/product404-marty-cagan-product-leadership-teams-product-vs-feature-teams-okrs-and-more/"
-            class="text-accent hover:underline font-normal"
-            >https://timwoods.io/2020/09/06/product404-marty-cagan-product-leadership-teams-product-vs-feature-teams-okrs-and-more/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Roles Explained: Program Managers vs Product Managers<br />
-          <a
-            href="https://productschool.com/blog/career-development/program-managers-vs-product-managers"
-            class="text-accent hover:underline font-normal"
-            >https://productschool.com/blog/career-development/program-managers-vs-product-managers</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          Technical Product Manager at Anara (Y Combinator Job)<br />
-          <a
-            href="https://www.ycombinator.com/companies/anara/jobs/1vX8BWc-technical-product-manager"
-            class="text-accent hover:underline font-normal"
-            >https://www.ycombinator.com/companies/anara/jobs/1vX8BWc-technical-product-manager</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          What It Takes to Grow Your Startup 500% in Months - First Round Review<br />
-          <a
-            href="https://review.firstround.com/what-it-takes-to-grow-your-startup-500-in-less-than-a-year/"
-            class="text-accent hover:underline font-normal"
-            >https://review.firstround.com/what-it-takes-to-grow-your-startup-500-in-less-than-a-year/</a
-          >
-        </li>
-        <li class="mb-4 font-semibold">
-          What Makes a Great Product Manager (Hacker News)<br />
-          <a
-            href="https://news.ycombinator.com/item?id=25179296"
-            class="text-accent hover:underline font-normal"
-            >https://news.ycombinator.com/item?id=25179296</a
-          >
-        </li>
-      </ul>
+
+      {
+        blogCategories.map((category) => (
+          <div>
+            <h3 class="text-3xl font-semibold mb-4 mt-14 text-gray-800 pb-2">
+              {category.name}
+            </h3>
+            <ul class="space-y-2 pl-4 mb-10">
+              {category.links.map((link) => (
+                <li class="mb-4 font-semibold">
+                  {link.title}
+                  <br />
+                  <a
+                    href={link.url}
+                    class="text-accent hover:underline font-normal"
+                  >
+                    {link.url}
+                  </a>
+                  <br />
+                  <span class="text-xs text-gray-500 font-normal">
+                    {link.tags.join(" ")}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
 
     <div>
       <h2 class="text-2xl font-bold mb-6">Books</h2>
       <ul class="space-y-2 pl-2">
-        <li>
-          <a
-            href="https://www.amazon.com/Inspired-Product-Management-Second/dp/1119387507"
-            class="text-accent hover:underline font-normal"
-            >Inspired: How to Create Tech Products Customers Love - Marty Cagan</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.amazon.com/Decode-Agile-Management-Engineers-Leading/dp/1732265186"
-            class="text-accent hover:underline font-normal"
-            >Decode and Conquer: Answers to Product Management Interviews -
-            Lewis Lin</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.amazon.com/Practical-Product-Management-Transform-Productivity/dp/1491927336"
-            class="text-accent hover:underline font-normal"
-            >The Practical Product Manager - Robert Siegel</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452637404"
-            class="text-accent hover:underline font-normal"
-            >The Design of Everyday Things - Don Norman</a
-          >
-        </li>
+        {
+          books.map((book) => (
+            <li>
+              <a
+                href={book.url}
+                class="text-accent hover:underline font-normal"
+              >
+                {book.title}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
