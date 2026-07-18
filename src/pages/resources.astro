@@ -51,26 +51,7 @@ const blogCategories: Category[] = [
         url: "https://productschool.com/blog/career-development/what-does-product-manager-do",
         tags: ["#pm-basics", "#product-management", "#career-intro"],
       },
-      {
-        title: "SVPG - Silicon Valley Product Group",
-        url: "https://www.svpg.com/articles",
-        tags: ["#pm-basics", "#product-strategy", "#marty-cagan"],
-      },
-      {
-        title: "Mind the Product",
-        url: "https://www.mindtheproduct.com/",
-        tags: ["#pm-community", "#product-management", "#blog"],
-      },
-      {
-        title: "ProductPlan Blog",
-        url: "https://www.productplan.com/blog/",
-        tags: ["#roadmap", "#product-management", "#blog"],
-      },
-      {
-        title: "Roman Pichler's Product Management Blog",
-        url: "https://www.romanpichler.com/blog/",
-        tags: ["#product-management", "#agile", "#scrum"],
-      },
+
       {
         title: "The Black Box of Product Management",
         url: "https://blackboxofpm.com/",
@@ -352,6 +333,34 @@ const books: Course[] = [
     url: "https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452637404",
   },
 ];
+
+const blogs: Link[] = [
+  {
+    title: "SVPG - Silicon Valley Product Group",
+    url: "https://www.svpg.com/articles",
+    tags: ["#pm-basics", "#product-strategy", "#marty-cagan"],
+  },
+  {
+    title: "Mind the Product",
+    url: "https://www.mindtheproduct.com/",
+    tags: ["#pm-community", "#product-management", "#blog"],
+  },
+  {
+    title: "ProductPlan Blog",
+    url: "https://www.productplan.com/blog/",
+    tags: ["#roadmap", "#product-management", "#blog"],
+  },
+  {
+    title: "Roman Pichler's Product Management Blog",
+    url: "https://www.romanpichler.com/blog/",
+    tags: ["#product-management", "#agile", "#scrum"],
+  },
+  {
+    title: "Lenny's Newsletter",
+    url: "https://www.lennysnewsletter.com/archive?sort=top",
+    tags: ["#pm-insights", "#newsletter", "#product-strategy", "#lenny-rachitsky"],
+  },
+];
 ---
 
 <BaseLayout
@@ -384,7 +393,7 @@ const books: Course[] = [
     </div>
 
     <div class="mb-24">
-      <h2 class="text-2xl font-bold mb-6">Suggested Blogs and Reading</h2>
+      <h2 class="text-2xl font-bold mb-6">Suggested Reading</h2>
 
       {
         blogCategories.map((category) => (
@@ -407,6 +416,25 @@ const books: Course[] = [
           </div>
         ))
       }
+    </div>
+
+    <div class="mb-24">
+      <h2 class="text-2xl font-bold mb-10">Blogs to Follow</h2>
+
+      <ul class="space-y-4 pl-4 mb-10">
+        {
+          blogs.map((link) => (
+            <li>
+              <ReadingLink
+                href={link.url}
+                lessonSlug="resources"
+                title={link.title}
+                tags={link.tags}
+              />
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <div>

@@ -10,7 +10,7 @@ const { href, lessonSlug, title, tags } = Astro.props;
 const storageKey = `pm-reading:${lessonSlug}:${href}`;
 ---
 
-<span class="reading-link-wrapper">
+<div class="reading-link-wrapper" data-reading-wrapper>
   <label class="reading-checkbox" data-tooltip="Mark as read">
     <input
       type="checkbox"
@@ -26,6 +26,7 @@ const storageKey = `pm-reading:${lessonSlug}:${href}`;
     target="_blank"
     rel="noreferrer"
     class="block flex flex-col !no-underline"
+    data-reading-link
   >
     <span class="text-lg font-semibold !no-underline">
       {title ?? title}
@@ -45,4 +46,33 @@ const storageKey = `pm-reading:${lessonSlug}:${href}`;
       )
     }
   </a>
-</span>
+</div>
+
+<script>
+  function updateReadingLinks() {
+    document.querySelectorAll("[data-reading-checkbox]").forEach((checkbox) => {
+      const wrapper = checkbox.closest("[data-reading-wrapper]");
+      if (!wrapper) return;
+
+      const isChecked = (checkbox as HTMLInputElement).checked;
+      if (isChecked) {
+        wrapper.classList.add("opacity-50");
+      } else {
+        wrapper.classList.remove("opacity-50");
+      }
+    });
+  }
+
+  // Update on page load
+  document.addEventListener("DOMContentLoaded", updateReadingLinks);
+
+  // Update when checkbox changes
+  document.addEventListener("change", (e) => {
+    if ((e.target as Element)?.getAttribute("data-reading-checkbox") !== null) {
+      updateReadingLinks();
+    }
+  });
+
+  // Update when reading progress is synced across checkboxes
+  window.addEventListener("reading-progress-update", updateReadingLinks);
+</script>
