@@ -3,6 +3,8 @@ import mdx from "@astrojs/mdx";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: "https://pm-course.ayushsaran3422.workers.dev",
   integrations: [mdx()],
@@ -19,5 +21,7 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  adapter: cloudflare()
 });
